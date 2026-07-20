@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/aloft-openapi-original.json
+docs: https://www.aloft.ai/developer/
+summary:
+  types:
+  - http
+  http_scheme: bearer
+  credential: Aloft Token
+  header: Authorization
+  note: >-
+    Aloft issues a per-integration API key (Aloft Token) provided on request; it
+    is sent as an http bearer credential in the Authorization header. Requests
+    are scoped to an account_id.
+schemes:
+- name: Aloft Token
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/aloft-openapi-original.json
