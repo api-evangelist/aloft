@@ -1,0 +1,269 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Workflows API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Workflows
+  description: Workflows
+paths:
+  /v1/account/{account_id}/workflows:
+    get:
+      tags:
+      - Workflows
+      summary: Gets workflows
+      description: Gets workflows
+      operationId: 4e45e2044639664a18018afabe28c5f2
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        required: false
+        schema:
+          type: string
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: search
+        in: query
+        description: A text field for search the title
+        schema:
+          type: string
+      - name: exclude_retired
+        in: query
+        description: If true will exclude retired workflows
+        schema:
+          type: boolean
+      - name: tags_required
+        in: query
+        description: When true, all tags must be connected to the object
+        schema:
+          type: boolean
+      - name: tags[]
+        in: query
+        description: array of tag ids
+        schema:
+          type: array
+          items:
+            description: A tag id
+            type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - account
+            - last_edited_by
+            - owner
+            - roles
+            - tags
+            - retired
+            - user_count
+            - workflow_steps
+            - workflow_steps.workflow_step_id
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Workflows
+      summary: Create a workflow
+      description: Create a workflow
+      operationId: ad53a49c937fc3f537a17ff59bd7b349
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - account
+            - last_edited_by
+            - owner
+            - roles
+            - tags
+            - retired
+            - user_count
+            - workflow_steps
+            - workflow_steps.workflow_step_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/workflow'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/workflows/{workflow_id}:
+    get:
+      tags:
+      - Workflows
+      summary: Get a workflow
+      description: Get a workflow
+      operationId: 22c018172d9fa4515ec8eb099742be37
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: workflow_id
+        in: path
+        description: workflow id
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - account
+            - last_edited_by
+            - owner
+            - roles
+            - tags
+            - retired
+            - user_count
+            - workflow_steps
+            - workflow_steps.workflow_step_id
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Workflows
+      summary: Update a workflow.
+      description: Update a workflow.
+      operationId: c46aea3dfacce08f9f660184aaa5a5bb
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: workflow_id
+        in: path
+        description: Workflow ID
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - account
+            - last_edited_by
+            - owner
+            - roles
+            - tags
+            - retired
+            - user_count
+            - workflow_steps
+            - workflow_steps.workflow_step_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/workflow'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    delete:
+      tags:
+      - Workflows
+      summary: Delete workflow
+      description: Delete workflow
+      operationId: 76bb7f9eeb26e7b73f3537d69a2e13be
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: workflow_id
+        in: path
+        description: workflow id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '204':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

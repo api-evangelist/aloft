@@ -1,0 +1,303 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Certification Renewal API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Certification Renewal
+  description: Certification Renewal
+paths:
+  /v1/account/{account_id}/certification-renewals:
+    get:
+      tags:
+      - Certification Renewal
+      summary: Get all certification renewals
+      description: Get all certification renewals
+      operationId: 11c8d707aed7adc20a170feb2e36ddaf
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+          enum:
+          - id
+          - renewal_number
+          - issue_date
+          - expiration_date
+          - created_at
+          - updated_at
+      - name: certification_id
+        in: query
+        description: Filter by certification id
+        schema:
+          type: integer
+      - name: renewal_number
+        in: query
+        description: Filter by renewal number
+        schema:
+          type: string
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            description: A list of models to attach
+            type: string
+            enum:
+            - certification
+            - file
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Certification Renewal
+      summary: Create a certitification renewal
+      description: Create a certitification renewal
+      operationId: b9fa9e26fff2eabe7e6df78dc3125135
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            description: A list of models to attach
+            type: string
+            enum:
+            - certification
+            - file
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/certification_renewal'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/certification-renewals/{renewal_id}:
+    get:
+      tags:
+      - Certification Renewal
+      summary: Get a certitification renewal
+      description: Get a certitification renewal
+      operationId: d2d6291ee29927923bb48b2031c53ee3
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: renewal_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            description: A list of models to attach
+            type: string
+            enum:
+            - certification
+            - file
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Certification Renewal
+      summary: Update a certitification renewal
+      description: Update a certitification renewal
+      operationId: 67f7d795aafc9aa75d99b1d6db79c01b
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: renewal_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            description: A list of models to attach
+            type: string
+            enum:
+            - certification
+            - file
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/certification_renewal'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    delete:
+      tags:
+      - Certification Renewal
+      summary: Delete a certitification renewal
+      description: Delete a certitification renewal
+      operationId: d939408706b4364c208690c4241d2c2b
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: renewal_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/certification-renewals/{renewal_id}/attach-image:
+    post:
+      tags:
+      - Certification Renewal
+      summary: Attach a file to a renewal.
+      description: Attach a file to a renewal.
+      operationId: 0dd63ba2d8f7e6e1a2e90c44bb4a51ad
+      parameters:
+      - name: account_id
+        in: path
+        schema:
+          $ref: '#components/schemas/account_id'
+      - name: renewal_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  type: file
+              type: object
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/certification-renewals/{renewal_id}/{file_id}:
+    delete:
+      tags:
+      - Certification Renewal
+      summary: Delete a certification renewal
+      description: Delete a certification renewal
+      operationId: 96f48ac1678c2e2c4899622d65bc94c3
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: renewal_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+      - name: file_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

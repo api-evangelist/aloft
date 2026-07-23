@@ -1,0 +1,92 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/aloft-openapi-original.json
+note: 'No official hosted/remote Aloft MCP server was found. This is a DERIVED candidate:
+  the Aloft API exposes 180 operations across 36 resource groups that could be surfaced
+  as MCP tools (one tool per operationId). Aloft operationIds are opaque hashes; a
+  real server would assign human-readable tool names.'
+server:
+  name: aloft
+  transport: http
+  url: null
+auth:
+  type: http
+  scheme: bearer
+  header: Authorization
+  credential: Aloft Token
+tool_source: openapi/aloft-openapi-original.json
+candidate_tool_count: 180
+tool_groups:
+- tag: Accounts
+  operations: 3
+- tag: Activity
+  operations: 4
+- tag: AirMesh
+  operations: 1
+- tag: Aircraft
+  operations: 8
+- tag: Airspace
+  operations: 8
+- tag: Alert Recipients
+  operations: 5
+- tag: Alerts
+  operations: 5
+- tag: Application Notices
+  operations: 1
+- tag: Auth
+  operations: 2
+- tag: Auto Tags
+  operations: 5
+- tag: Batteries
+  operations: 7
+- tag: Certification Renewal
+  operations: 7
+- tag: Certifications
+  operations: 5
+- tag: Checklist Executions
+  operations: 4
+- tag: Checklists
+  operations: 5
+- tag: Components
+  operations: 1
+- tag: Connections
+  operations: 5
+- tag: Files
+  operations: 9
+- tag: Files by Resource
+  operations: 9
+- tag: Flight Logs
+  operations: 1
+- tag: Flight Sessions
+  operations: 7
+- tag: Flights
+  operations: 13
+- tag: Incidents
+  operations: 5
+- tag: Maintenance
+  operations: 5
+- tag: Maintenance Recommendations
+  operations: 1
+- tag: Maintenance Schedules (Beta)
+  operations: 5
+- tag: Missions
+  operations: 7
+- tag: Notify & Fly
+  operations: 1
+- tag: Risk Assessment Executions
+  operations: 5
+- tag: Risk Assessments
+  operations: 6
+- tag: Tag Associations
+  operations: 2
+- tag: Tag Groups
+  operations: 6
+- tag: Tags
+  operations: 5
+- tag: Users
+  operations: 5
+- tag: VideoStreaming
+  operations: 7
+- tag: Workflows
+  operations: 5

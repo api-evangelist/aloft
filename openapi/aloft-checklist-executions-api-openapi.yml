@@ -1,0 +1,229 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Checklist Executions API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Checklist Executions
+  description: Checklist Executions
+paths:
+  /v1/account/{account_id}/checklist-executions:
+    get:
+      tags:
+      - Checklist Executions
+      summary: Get all checklist executions
+      description: Get all checklist executions
+      operationId: 5b1183940180a0c8234d73377fcac1e7
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: checklist_id
+        in: query
+        schema:
+          type: integer
+      - name: user_id
+        in: query
+        schema:
+          type: integer
+      - name: user_name
+        in: query
+        schema:
+          type: string
+      - name: start
+        in: query
+        schema:
+          type: integer
+      - name: stop
+        in: query
+        schema:
+          type: integer
+      - name: search
+        in: query
+        description: Search by identifier & source.
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+          enum:
+          - id
+          - user_id
+          - state
+          - completed_at
+          - created_at
+          - updated_at
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - checklist
+            - flight
+            - items
+            - user
+            - user.is_retired
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        required: false
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Checklist Executions
+      summary: Create a checklist execution
+      description: Create a checklist execution
+      operationId: 3ea3030080a614736f329298de2573b6
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - checklist
+            - items
+            - flight
+            - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/checklist_execution'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/checklist-executions/{checklist_execution_id}:
+    get:
+      tags:
+      - Checklist Executions
+      summary: Gets checklist executions
+      description: Gets checklist executions
+      operationId: 46371ad6af9388401f868b45d18804c4
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: checklist_execution_id
+        in: path
+        description: Checklist Execution ID
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: array of model names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - checklist
+            - items
+            - flight
+            - user
+            - user.is_retired
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Checklist Executions
+      summary: Create a checklist execution
+      description: Create a checklist execution
+      operationId: 8afab67ce366da1d5ab7b12ff5c0c884
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - checklist
+            - items
+            - flight
+            - user
+      - name: checklist_execution_id
+        in: path
+        description: Checklist Execution ID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/checklist_execution'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

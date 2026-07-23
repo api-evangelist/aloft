@@ -1,0 +1,43 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/aloft-openapi-original.json
+authentication:
+  style: bearer
+  header: Authorization
+  scheme: Aloft Token (http bearer)
+  ref: authentication/aloft-authentication.yml
+multitenancy:
+  model: account-scoped
+  path_param: account_id
+  note: Nearly all resource operations are nested under /v1/account/{account_id}/...
+pagination:
+  style: page-number
+  params:
+  - page
+  - page_length
+  sort_params:
+  - order_by
+  - order
+  note: Collection endpoints accept page/page_length with order_by + order for sorting.
+field_expansion:
+  param: appends[]
+  style: append-related
+  note: Related sub-resources are opt-in via the appends[] query parameter rather
+    than returned by default.
+idempotency:
+  supported: false
+  note: No Idempotency-Key header or idempotency parameter is documented in the OpenAPI;
+    write operations are not declared idempotent.
+versioning:
+  scheme: uri-path
+  current: v1
+  ref: lifecycle/aloft-lifecycle.yml
+errors:
+  content_type: application/json
+  validation_status: 422
+  ref: errors/aloft-problem-types.yml
+rate_limits:
+  documented: false
+geospatial:
+  note: Airspace endpoints accept lat/lng or GeoJSON Polygon/Point features; schemas
+    geojson_polygon, geojson_point, geojson_line_string.

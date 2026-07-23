@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Maintenance Recommendations API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Maintenance Recommendations
+  description: Maintenance Recommendations
+paths:
+  /v1/account/{account_id}/maintenance-recommendations:
+    get:
+      tags:
+      - Maintenance Recommendations
+      summary: Gets maintenance recommendations
+      description: Gets maintenance recommendations
+      operationId: 9662e1e2df7af2918a0c62b08cca4a47
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - aircraft
+            - schedule
+      - name: aircraft_id
+        in: query
+        description: aircraft id
+        schema:
+          type: integer
+      - name: schedule_id
+        in: query
+        description: schedule id
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

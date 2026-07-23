@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts AirMesh API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: AirMesh
+  description: AirMesh
+paths:
+  /airmesh/token-validation/{token}:
+    get:
+      tags:
+      - AirMesh
+      summary: Verify the AirMesh integration token
+      description: Request for the AirMesh connection token to be validated
+      operationId: 66c2cb78f64f0839909e8ccece3851c6
+      parameters:
+      - name: X-Airmesh-OEM-Token
+        in: header
+        description: Airmesh OEM token
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: Connection token
+        required: true
+        schema:
+          type: string
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Invalid token
+        '200':
+          description: Token validated
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

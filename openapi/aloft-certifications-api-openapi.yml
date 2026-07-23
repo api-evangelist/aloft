@@ -1,0 +1,253 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Certifications API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Certifications
+  description: Certifications
+paths:
+  /v1/account/{account_id}/certifications:
+    get:
+      tags:
+      - Certifications
+      summary: Get all certifications
+      description: Get all certifications
+      operationId: fc0fe86362b3cec098c38dd619dda19e
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+          enum:
+          - id
+          - compliance_required
+          - certification_number
+          - type
+          - created_at
+          - updated_at
+          - expiration_date
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: certification_number
+        in: query
+        description: Filter by certification number
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Filter by type
+        schema:
+          type: string
+      - name: user_id
+        in: query
+        description: Filter by user id
+        schema:
+          type: integer
+      - name: compliance_required
+        in: query
+        description: Filter by compliance required
+        schema:
+          type: boolean
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            description: A list of models to attach
+            type: string
+            enum:
+            - user
+            - renewals
+            - renewals.file
+            - expiration_date
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Certifications
+      summary: Create a certitification
+      description: Create a certitification
+      operationId: 7a1610a35ea2227433864b63560fac0a
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            description: A list of models to attach
+            type: string
+            enum:
+            - user
+            - renewals
+            - renewals.file
+            - expiration_date
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/certification'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/certifications/{certification_id}:
+    get:
+      tags:
+      - Certifications
+      summary: Get a certitification
+      description: Get a certitification
+      operationId: fefb780f4123db6a64afc684d3e449dd
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: certification_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            description: A list of models to attach
+            type: string
+            enum:
+            - user
+            - renewals
+            - renewals.file
+            - expiration_date
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Certifications
+      summary: Update a certitification
+      description: Update a certitification
+      operationId: 8dd2dcd89cfe406652b2587c060562ae
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: certification_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            description: A list of models to attach
+            type: string
+            enum:
+            - user
+            - renewals
+            - renewals.file
+            - expiration_date
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/certification'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    delete:
+      tags:
+      - Certifications
+      summary: Delete a certitification
+      description: Delete a certitification
+      operationId: 34488696ceb7310436ce9433f2d1aefc
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: certification_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

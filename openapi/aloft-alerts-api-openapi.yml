@@ -1,0 +1,220 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Alerts API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Alerts
+  description: Alerts
+paths:
+  /v1/account/{account_id}/alerts:
+    get:
+      tags:
+      - Alerts
+      summary: Get alerts
+      description: Get alerts
+      operationId: 643def1d9af298df867a3c584be47545
+      parameters:
+      - name: account_id
+        in: path
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      - name: type[]
+        in: query
+        description: A list of alert types
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - pilot_certification
+            - mission_status_change
+      - name: appends[]
+        in: query
+        description: array of model names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - alertRecipients
+            - alertRecipients.detail
+            - user
+            - user.is_retired
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+          enum:
+          - id
+          - type
+          - schedule
+          - created_at
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+    post:
+      tags:
+      - Alerts
+      summary: Create an alert
+      description: Create an alert
+      operationId: 285a110b24077b86ed65f02ca77662ba
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: array of model names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - alertRecipients
+            - alertRecipients.detail
+            - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/alert'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unathorized
+        '201':
+          description: Successful operation
+  /v1/account/{account_id}/alerts/{alert_id}:
+    get:
+      tags:
+      - Alerts
+      summary: Get an alert
+      description: Get an alert
+      operationId: eb8fc2b00bf1caded9a3845f08f04066
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: alert_id
+        in: path
+        description: Alert Id
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: array of model names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - alertRecipients
+            - alertRecipients.detail
+            - user
+            - user.is_retired
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+    put:
+      tags:
+      - Alerts
+      summary: Update an alert
+      description: Update an alert
+      operationId: 147d8cc665057c3905ab6744e2fbdafa
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: alert_id
+        in: path
+        description: Alert Id
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: array of model names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - alertRecipients
+            - alertRecipients.detail
+            - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/alert'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+    delete:
+      tags:
+      - Alerts
+      summary: Delete an alert
+      description: Delete an alert
+      operationId: da26caafbfe69aa01454c14dcedcc434
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: alert_id
+        in: path
+        description: Alert Id.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '204':
+          description: Successful operation
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

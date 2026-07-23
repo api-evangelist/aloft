@@ -1,22 +1,611 @@
 aid: aloft
 name: Aloft
-description: Aloft is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Aloft (aloft.ai, formerly Kittyhawk.io) is the leading FAA-approved provider of
+  drone airspace and fleet-management software in the United States, powering the
+  majority of LAANC airspace authorizations and unmanned traffic management (UTM)
+  for government, public-safety, enterprise, and recreational drone pilots. The
+  Aloft API V1 is an http-bearer-authenticated REST API exposing 180 operations
+  across 36 resource groups: airspace advisories and weather, LAANC / Notify & Fly,
+  flights and flight logs, aircraft, batteries and maintenance, missions, risk
+  assessments, checklists, incidents, alerts, files, workflows, and map tile
+  layers. Aloft is SOC 2 Type II and ISO 27001 certified. This profile was enriched
+  by the API Evangelist pipeline from Aloft's public OpenAPI and developer surface.
 url: https://raw.githubusercontent.com/api-evangelist/aloft/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - a16z
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.aloft.ai/wp-content/uploads/2019/11/1-2.jpg
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
-- Company
-apis: []
+- Drones
+- Airspace
+- UTM
+- LAANC
+- Aviation
+- Fleet Management
+- Geospatial
+- Public Safety
+apis:
+- aid: aloft:aloft-accounts-api
+  name: Aloft Accounts API
+  description: Accounts
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-activity-api
+  name: Aloft Activity API
+  description: Activity
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Activity
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-activity-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-aircraft-api
+  name: Aloft Aircraft API
+  description: Aircraft
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Aircraft
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-aircraft-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-airmesh-api
+  name: Aloft AirMesh API
+  description: AirMesh
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - AirMesh
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-airmesh-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-airspace-api
+  name: Aloft Airspace API
+  description: Airspace
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Airspace
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-airspace-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-alert-recipients-api
+  name: Aloft Alert Recipients API
+  description: Alert Recipients
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Alert Recipients
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-alert-recipients-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-alerts-api
+  name: Aloft Alerts API
+  description: Alerts
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-alerts-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-application-notices-api
+  name: Aloft Application Notices API
+  description: Application Notices
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Application Notices
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-application-notices-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-auth-api
+  name: Aloft Auth API
+  description: Auth
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-auth-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-auto-tags-api
+  name: Aloft Auto Tags API
+  description: Auto Tags
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Auto Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-auto-tags-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-batteries-api
+  name: Aloft Batteries API
+  description: Batteries
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Batteries
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-batteries-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-certification-renewal-api
+  name: Aloft Certification Renewal API
+  description: Certification Renewal
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Certification Renewal
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-certification-renewal-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-certifications-api
+  name: Aloft Certifications API
+  description: Certifications
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Certifications
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-certifications-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-checklist-executions-api
+  name: Aloft Checklist Executions API
+  description: Checklist Executions
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Checklist Executions
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-checklist-executions-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-checklists-api
+  name: Aloft Checklists API
+  description: Checklists
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Checklists
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-checklists-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-components-api
+  name: Aloft Components API
+  description: Components
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Components
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-components-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-connections-api
+  name: Aloft Connections API
+  description: Connections
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-connections-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-files-api
+  name: Aloft Files API
+  description: Files
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-files-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-files-by-resource-api
+  name: Aloft Files by Resource API
+  description: Files by Resource
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Files by Resource
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-files-by-resource-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-flight-logs-api
+  name: Aloft Flight Logs API
+  description: Flight Logs
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Flight Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-flight-logs-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-flight-sessions-api
+  name: Aloft Flight Sessions API
+  description: Flight Sessions
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Flight Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-flight-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-flights-api
+  name: Aloft Flights API
+  description: Flights
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Flights
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-flights-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-incidents-api
+  name: Aloft Incidents API
+  description: Incidents
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Incidents
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-incidents-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-maintenance-api
+  name: Aloft Maintenance API
+  description: Maintenance
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Maintenance
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-maintenance-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-maintenance-recommendations-api
+  name: Aloft Maintenance Recommendations API
+  description: Maintenance Recommendations
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Maintenance Recommendations
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-maintenance-recommendations-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-maintenance-schedules-beta-api
+  name: Aloft Maintenance Schedules (Beta) API
+  description: Maintenance Schedules (Beta)
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Maintenance Schedules (Beta)
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-maintenance-schedules-beta-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-missions-api
+  name: Aloft Missions API
+  description: Missions
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Missions
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-missions-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-notify-fly-api
+  name: Aloft Notify & Fly API
+  description: Notify & Fly
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Notify & Fly
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-notify-fly-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-risk-assessment-executions-api
+  name: Aloft Risk Assessment Executions API
+  description: Risk Assessment Executions
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Risk Assessment Executions
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-risk-assessment-executions-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-risk-assessments-api
+  name: Aloft Risk Assessments API
+  description: Risk Assessments
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Risk Assessments
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-risk-assessments-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-tag-associations-api
+  name: Aloft Tag Associations API
+  description: Tag Associations
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Tag Associations
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-tag-associations-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-tag-groups-api
+  name: Aloft Tag Groups API
+  description: Tag Groups
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Tag Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-tag-groups-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-tags-api
+  name: Aloft Tags API
+  description: Tags
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-tags-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-users-api
+  name: Aloft Users API
+  description: Users
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-users-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-videostreaming-api
+  name: Aloft VideoStreaming API
+  description: VideoStreaming
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - VideoStreaming
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-videostreaming-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-workflows-api
+  name: Aloft Workflows API
+  description: Workflows
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Workflows
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: AgenticAccess
+  url: agentic-access/aloft-agentic-access.yml
+- type: Authentication
+  url: authentication/aloft-authentication.yml
+- type: Conventions
+  url: conventions/aloft-conventions.yml
+- type: ErrorCatalog
+  url: errors/aloft-problem-types.yml
+- type: DataModel
+  url: data-model/aloft-data-model.yml
+- type: Lifecycle
+  url: lifecycle/aloft-lifecycle.yml
+- type: StatusPage
+  url: https://status.aloft.ai
+- type: Conformance
+  url: conformance/aloft-conformance.yml
+- type: Compliance
+  url: https://www.aloft.ai/security/
+- type: TrustCenter
+  url: security/aloft-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/aloft-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.aloft.ai/security/
+- type: DomainSecurity
+  url: security/aloft-domain-security.yml
+- type: MCPServer
+  url: mcp/aloft-mcp.yml
+- type: LLMsTxt
+  url: llms/aloft-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DeveloperPortal
+  url: https://www.aloft.ai/developer/
+- type: Documentation
+  url: https://api.aloft.ai/v1/docs
+- type: APIReference
+  url: https://api.aloft.ai/v1/docs
+- type: Support
+  url: https://www.aloft.ai/support/
+- type: Blog
+  url: https://www.aloft.ai/news/
+- type: GitHubOrganization
+  url: https://github.com/Kittyhawkio
+- type: Login
+  url: https://www.aloft.ai/login/
+- type: TermsOfService
+  url: https://www.aloft.ai/terms/
+- type: PrivacyPolicy
+  url: https://www.aloft.ai/privacy/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/aloft-openapi-original.json
+skills:
+  - file: aloft-airspace-check-and-notify.md
+    name: Check airspace and file a Notify & Fly flight
+    api: openapi/aloft-openapi-original.json
+    operations:
+      - 7f9bbad943443bcb2ae82013acdba86e
+      - 0e20bc62af934af69944b83534177aab
+      - e7a566e3dae1139a1bf76c956a143a45
+      - b8b4b08218e2367457b62fecf4f3dc86
+  - file: aloft-import-and-log-flight.md
+    name: Import a drone flight log and attach media
+    api: openapi/aloft-openapi-original.json
+    operations:
+      - bafdf102e8e7154e8f38eeb107254958
+      - afffbdaf3275de31c3d7a713b103ed6d
+      - 90b3b1bc69e727654650e69340ad682b
+      - 8ff7c1bb99f0339327e6580d21f13928

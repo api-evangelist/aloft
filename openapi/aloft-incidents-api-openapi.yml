@@ -1,0 +1,249 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Incidents API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Incidents
+  description: Incidents
+paths:
+  /v1/account/{account_id}/incidents:
+    get:
+      tags:
+      - Incidents
+      summary: Get all incidents
+      description: Get all incidents
+      operationId: 51d3654d2655fade067d0584f7318567
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+          enum:
+          - short_title
+          - type
+          - happened_at
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - aircraft
+            - user
+            - user.is_retired
+            - tags
+            - files
+      - name: tags_required
+        in: query
+        description: When true, all tags must be connected to the object
+        schema:
+          type: boolean
+      - name: tags[]
+        in: query
+        description: array of tag ids
+        schema:
+          type: array
+          items:
+            description: A tag id
+            type: integer
+      - name: user_id
+        in: query
+        schema:
+          type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Incidents
+      summary: Create an incident
+      description: Create an incident
+      operationId: 21a30b08b31dd0a0afd842691db7450f
+      parameters:
+      - name: account_id
+        in: path
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - aircraft
+            - user
+            - user.is_retired
+            - tags
+            - files
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/incident'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/incidents/{incident_id}:
+    get:
+      tags:
+      - Incidents
+      summary: Get an incident.
+      description: Get an incident
+      operationId: 0eaf9f70f691805b863e29e7462e59ac
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - aircraft
+            - user
+            - user.is_retired
+            - tags
+            - files
+      - name: incident_id
+        in: path
+        description: Incident ID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Incidents
+      summary: Update an incident
+      description: Update an incident
+      operationId: cf26ca0e929a2e8a712f53338dc870cf
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - aircraft
+            - user
+            - user.is_retired
+            - tags
+            - files
+      - name: incident_id
+        in: path
+        description: Incident ID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/incident'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    delete:
+      tags:
+      - Incidents
+      summary: Delete an incident
+      description: Delete an incident
+      operationId: 81cb90c6ac30605fdac7dafaf12ad2a5
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: incident_id
+        in: path
+        description: Incident ID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

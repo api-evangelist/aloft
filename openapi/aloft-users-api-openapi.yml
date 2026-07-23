@@ -1,0 +1,294 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Users API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Users
+  description: Users
+paths:
+  /v1/account/{account_id}/users:
+    get:
+      tags:
+      - Users
+      summary: Get users
+      description: Get users
+      operationId: 24fc407bb84ff632c1addf737a9bb1d5
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/account_id'
+      - name: search
+        in: query
+        description: Search for term.
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+          enum:
+          - firstname
+          - lastname
+          - email
+          - faa_107_number
+          - role
+          - flight_count
+          - last_flown
+          - total_flight_hours
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: on_role
+        in: query
+        description: role id to include
+        schema:
+          type: integer
+      - name: not_on_role
+        in: query
+        description: role id to exclude
+        schema:
+          type: integer
+      - name: verified_phone
+        in: query
+        schema:
+          type: boolean
+      - name: tags_required
+        in: query
+        description: When true, all tags must be connected to the object
+        schema:
+          type: boolean
+      - name: tags[]
+        in: query
+        description: array of tag ids
+        schema:
+          type: array
+          items:
+            description: A tag id
+            type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: retired
+        in: query
+        description: Returns retired users
+        schema:
+          type: boolean
+      - name: name
+        in: query
+        description: The field to find users by first name and last name
+        schema:
+          type: string
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - faa_107_renewal
+            - is_retired
+            - role
+            - tags
+            - total_flight_hours
+            - flight_count
+            - last_flown
+            - last_location
+            - is_recent
+            - is_compliant
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/users/{user_id}:
+    get:
+      tags:
+      - Users
+      summary: Get a user
+      description: Get a user
+      operationId: 4cf588625d651a67b0d0e35c7095ba89
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - faa_107_renewal
+            - is_retired
+            - role
+            - tags
+            - total_flight_hours
+            - flight_count
+            - last_flown
+            - last_location
+            - is_recent
+            - is_compliant
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Users
+      summary: Update a user
+      description: Update a user
+      operationId: b2780d3a080c4ee4fae6c13c2e2f40f0
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/account_id'
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - faa_107_renewal
+            - is_retired
+            - role
+            - tags
+            - total_flight_hours
+            - flight_count
+            - last_flown
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/user'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/users/{user_id}/retire:
+    put:
+      tags:
+      - Users
+      summary: Change retired status of user
+      description: Change retired status of user
+      operationId: 2a37f1a332ec1d2b0e7d4e6d3b9b6cf4
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/user_retired_request'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '400':
+          description: Bad Request
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/users/{user_id}/location:
+    post:
+      tags:
+      - Users
+      summary: Store last known location of user
+      description: Store last known location of user
+      operationId: 5117c30cd0275f26528da4b6d422c19a
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/user_location'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '201':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

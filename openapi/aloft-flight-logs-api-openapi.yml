@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Flight Logs API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Flight Logs
+  description: Flight Logs
+paths:
+  /v1/account/{account_id}/flight-logs/detect-duplicates:
+    post:
+      tags:
+      - Flight Logs
+      summary: Determines if DJI Flight logs have already been imported by file name.
+      description: Determines if DJI Flight logs have already been imported by file name.
+      operationId: 626acb1dcf47a050d49306446148530e
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/account_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/flight_log_duplicate_detection'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

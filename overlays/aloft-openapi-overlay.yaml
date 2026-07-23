@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Aloft API V1
+  version: 1.0.0
+extends: openapi/aloft-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: aloft
+    x-apievangelist-category: drone-airspace-utm
+    x-apievangelist-base-url: https://api.aloft.ai
+    x-apievangelist-notes: Base URL is not declared in servers[]; operations are rooted
+      at https://api.aloft.ai and versioned via the /v1 path prefix. Auth is an http
+      bearer credential (Aloft Token).
+- target: $
+  update:
+    servers:
+    - url: https://api.aloft.ai
+      description: Aloft API V1 production (added by API Evangelist; not declared
+        in source spec)

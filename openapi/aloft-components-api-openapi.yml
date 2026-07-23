@@ -1,0 +1,55 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Components API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Components
+  description: Components
+paths:
+  /v1/accounts/{account}/components:
+    get:
+      tags:
+      - Components
+      summary: Get all components
+      description: Get all components
+      operationId: 6aaf745fb4474dc94346f7332e12cb3c
+      parameters:
+      - name: type
+        in: query
+        description: Filter by type, e.g. 'fixed-wing', 'multi-rotor'
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      responses:
+        '401':
+          description: Unauthorized
+        '403':
+          description: Access Denied
+        '200':
+          description: Success
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

@@ -1,0 +1,716 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Flights API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Flights
+  description: Flights
+paths:
+  /v1/account/{account_id}/flights:
+    get:
+      tags:
+      - Flights
+      summary: Get all flights
+      description: Get all flights
+      operationId: bafdf102e8e7154e8f38eeb107254958
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: search
+        in: query
+        description: Search for term.
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: aircraft_model[]
+        in: query
+        description: Filter by aircraft models
+        schema:
+          type: string
+      - name: aircraft_name
+        in: query
+        schema:
+          type: string
+      - name: user_id
+        in: query
+        schema:
+          type: integer
+      - name: user_name
+        in: query
+        schema:
+          type: string
+      - name: start
+        in: query
+        schema:
+          type: integer
+      - name: stop
+        in: query
+        schema:
+          type: integer
+      - name: mission_id
+        in: query
+        schema:
+          type: integer
+      - name: batteries[]
+        in: query
+        description: Filter by batteries
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: aircraft[]
+        in: query
+        description: Filter by aircraft
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      - name: exclude_mission
+        in: query
+        schema:
+          type: boolean
+      - name: has_flight_session
+        in: query
+        schema:
+          type: boolean
+      - name: flight_session_uuid
+        in: query
+        schema:
+          type: string
+      - name: merged
+        in: query
+        schema:
+          type: boolean
+      - name: origin_system[]
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - ac
+            - import
+            - third_party_app
+            - classic
+            - public_api
+            - unknown
+      - name: origin_env[]
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - android
+            - ios
+            - public_api
+            - unknown
+            - web
+      - name: origin_method[]
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - autel
+            - bulk
+            - dji
+            - import
+            - manual
+            - skydio
+            - third_party_app
+            - unknown
+      - name: airspace[]
+        in: query
+        schema:
+          type: array
+          items:
+            description: status
+            type: string
+            enum:
+            - Restricted
+            - Caution
+            - Clear
+            - Authorization
+      - name: has_laanc_auth
+        in: query
+        description: When true, only return missions with LAANC authorizations. When false, only return missions without LAANC authorizations.
+        schema:
+          type: boolean
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - address
+            - airspace
+            - aircraft_firmware
+            - altitude_max
+            - distance
+            - gps_satellites_min
+            - gps_satellites_max
+            - speed_max
+            - path
+            - weather
+            - photo_count
+            - aircraft
+            - batteries
+            - batterySummaries
+            - mission
+            - tags
+            - user
+            - user.is_retired
+            - flight_ended
+            - workflowExecutions
+            - import_id
+            - laanc_auth_count
+            - laanc_auths
+            - playback_available
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      - name: tags[]
+        in: query
+        description: array of tag ids
+        schema:
+          type: array
+          items:
+            description: A tag id
+            type: integer
+      - name: tags_required
+        in: query
+        description: When true, all tags must be connected to the object
+        schema:
+          type: boolean
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Flights
+      summary: Create a flight
+      description: Create a flight
+      operationId: e7a566e3dae1139a1bf76c956a143a45
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - address
+            - airspace
+            - aircraft_firmware
+            - altitude_max
+            - distance
+            - gps_satellites_min
+            - gps_satellites_max
+            - speed_max
+            - path
+            - weather
+            - photo_count
+            - aircraft
+            - batteries
+            - batterySummaries
+            - mission
+            - tags
+            - user
+            - user.is_retired
+            - flight_ended
+            - workflowExecutions
+            - import_id
+            - laanc_auth_count
+            - laanc_auths
+            - playback_available
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/flight'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/flights/{flight_id}:
+    get:
+      tags:
+      - Flights
+      summary: Get a flight
+      description: Get a flight
+      operationId: b075a4eed88087a42a9c62671666a45a
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: flight_id
+        in: path
+        description: The flight ID
+        required: true
+        schema:
+          type: integer
+        example: 1
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - address
+            - airspace
+            - aircraft_firmware
+            - altitude_max
+            - distance
+            - gps_satellites_min
+            - gps_satellites_max
+            - speed_max
+            - path
+            - weather
+            - photo_count
+            - aircraft
+            - batteries
+            - batterySummaries
+            - mission
+            - tags
+            - user
+            - user.is_retired
+            - flight_ended
+            - workflowExecutions
+            - import_id
+            - laanc_auth_count
+            - laanc_auths
+            - playback_available
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Flights
+      summary: Update a flight
+      description: Update a flight
+      operationId: d4c02d7d1482ab511b3296803bd5ad43
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: flight_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - address
+            - airspace
+            - aircraft_firmware
+            - altitude_max
+            - distance
+            - gps_satellites_min
+            - gps_satellites_max
+            - speed_max
+            - path
+            - weather
+            - photo_count
+            - aircraft
+            - batteries
+            - batterySummaries
+            - mission
+            - tags
+            - user
+            - user.is_retired
+            - flight_ended
+            - workflowExecutions
+            - import_id
+            - laanc_auth_count
+            - laanc_auths
+            - playback_available
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/flight'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    delete:
+      tags:
+      - Flights
+      summary: Delete a flight
+      description: Delete a flight, only for manual flights
+      operationId: c7f127a00d3759e03a3e7501a90c7e3c
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: flight_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '204':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/flights/{target_flight_id}/merge/{source_flight_id}:
+    post:
+      tags:
+      - Flights
+      summary: Merge flights
+      description: Merge an imported flight (target_flight) with a manual one (source_flight).
+      operationId: 024c576ba83a85c30f86bfb5e90cf356
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: target_flight_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: source_flight_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/flights/{flight_id}/unmerge:
+    get:
+      tags:
+      - Flights
+      summary: Flight unmerge info
+      description: Flight unmerge info
+      operationId: 3e189c7628834a0bbba820f9b70722e5
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: flight_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Flights
+      summary: Unmerge flight.
+      description: Unmerge flight
+      operationId: 8307aeb9a78077d4b2bdd2a13d32dd92
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: flight_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/flights/import:
+    post:
+      tags:
+      - Flights
+      summary: Create a flight from a flight log.
+      description: Create a flight from a flight log.
+      operationId: afffbdaf3275de31c3d7a713b103ed6d
+      parameters:
+      - name: account_id
+        in: path
+        schema:
+          $ref: '#components/schemas/account_id'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                format:
+                  type: string
+                  enum:
+                  - dji
+                  - aloft-v1
+                user_id:
+                  type: integer
+                file:
+                  type: file
+              type: object
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/flights/reimport:
+    post:
+      tags:
+      - Flights
+      summary: Reimports a flight a dji if there is a native log DJI.
+      description: Reimports a flight a dji if there is a native log DJI.
+      operationId: ce35e2e59ba18dfebd245517c4c5e6d1
+      parameters:
+      - name: account_id
+        in: path
+        schema:
+          $ref: '#components/schemas/account_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                flight_ids:
+                  type: array
+                  items:
+                    description: flight id
+                    type: integer
+                    example: '33'
+              type: object
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/flights/{flight_id}/media:
+    post:
+      tags:
+      - Flights
+      summary: Attaches a media file to a flight.
+      description: Attaches a media file to a flight.
+      operationId: 90b3b1bc69e727654650e69340ad682b
+      parameters:
+      - name: account_id
+        in: path
+        schema:
+          $ref: '#components/schemas/account_id'
+      - name: flight_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  type: file
+              type: object
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '201':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/flights/{flight_id}/playback:
+    get:
+      tags:
+      - Flights
+      summary: Playback a flight
+      description: Get data required for playback of a flight
+      operationId: bf14ab73314445cdff7e2d40c1a535d7
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: flight_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: output
+        in: query
+        required: false
+        schema:
+          type: string
+          default: csv
+          enum:
+          - csv
+          - json
+      responses:
+        '401':
+          description: Unauthorized
+        '403':
+          description: Access Denied
+        '404':
+          description: Resource not found
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/flights/{flight_id}/flight-path:
+    get:
+      tags:
+      - Flights
+      summary: Download flight path as KML
+      description: Get data required for flight path playback as KML
+      operationId: 8ff7c1bb99f0339327e6580d21f13928
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: flight_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '401':
+          description: Unauthorized
+        '403':
+          description: Access Denied
+        '404':
+          description: Resource not found
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation - Returns KML file
+          content:
+            application/vnd.google-earth.kml+xml:
+              schema:
+                type: string
+                format: binary
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

@@ -1,0 +1,52 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/aloft-openapi-original.json
+format: json
+note: Aloft returns plain application/json error bodies (no RFC 9457 problem+json
+  content type observed in the spec); 422 responses carry field-level validation errors.
+envelope_field: message / errors
+problems:
+- status: 304
+  title: Not Modified
+  occurrences: 2
+  remediation: Resource unchanged since the provided validator; use the cached representation.
+  observed_descriptions:
+  - Not Modified
+- status: 400
+  title: Bad Request
+  occurrences: 2
+  remediation: The request was malformed; check required parameters and body shape.
+  observed_descriptions:
+  - Bad Request
+  - Invalid Request
+- status: 401
+  title: Unauthorized
+  occurrences: 173
+  remediation: Provide a valid Aloft Token bearer credential in the Authorization
+    header.
+  observed_descriptions:
+  - Invalid token
+  - Unathorized
+  - Unauthorized
+- status: 403
+  title: Forbidden
+  occurrences: 173
+  remediation: The authenticated token lacks permission for this account or resource;
+    verify account_id scope.
+  observed_descriptions:
+  - Access Denied
+  - Forbidden
+- status: 404
+  title: Not Found
+  occurrences: 7
+  remediation: The requested resource does not exist under the given account_id.
+  observed_descriptions:
+  - Not Found
+  - Resource not found
+- status: 422
+  title: Unprocessable Entity
+  occurrences: 40
+  remediation: Request failed validation; inspect the returned field errors and correct
+    the payload.
+  observed_descriptions:
+  - Unprocessable Content

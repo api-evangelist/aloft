@@ -1,0 +1,381 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Files API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Files
+  description: Files
+paths:
+  /v1/account/{account_id}/files:
+    get:
+      tags:
+      - Files
+      summary: Get all files
+      description: Get all files
+      operationId: e72e7c0395e8e1ca3e7d874d0fbf8afd
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: before
+        in: query
+        description: Only return files created before this date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: after
+        in: query
+        description: Only return files created after this date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: file_association_type
+        in: query
+        description: 'The owner of the file''s type, for example: flight, aircraft, etc.'
+        required: false
+        schema:
+          type: string
+      - name: file_association_id
+        in: query
+        description: The id of the file_association_type resource to query for
+        required: false
+        schema:
+          type: integer
+      - name: document_type
+        in: query
+        description: 'File type. Can be: document, media or flight_log'
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: 'File type. Can be: flight-image, dji, etc..'
+        required: false
+        schema:
+          type: string
+      - name: extension
+        in: query
+        description: File extension. Such as jpg, pdf, csv, etc.
+        required: false
+        schema:
+          type: string
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - file_associations
+            - file_associations_count
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      - name: tags[]
+        in: query
+        description: array of tag ids
+        schema:
+          type: array
+          items:
+            description: A tag id
+            type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Files
+      summary: Upload a file
+      description: Upload a file
+      operationId: c0fc1d5894d5e262067bb21732dccf31
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - file_associations
+            - file_associations_count
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#components/schemas/file_store'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '201':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/files/{file_id}:
+    get:
+      tags:
+      - Files
+      summary: Get a file
+      operationId: 7a15f614259e0de018eccea1a32fa0cd
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: file_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - file_associations
+            - file_associations_count
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Files
+      summary: Update a file
+      description: Update a file
+      operationId: 9838849b89b3520b58331fc80fa515a6
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: file_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: File to upload
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/update_file'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+    delete:
+      tags:
+      - Files
+      summary: Delete a file
+      description: Delete a file
+      operationId: 5c86d25744db624e20fc775b35398fdb
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: file_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '204':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/files/bulk:
+    get:
+      tags:
+      - Files
+      summary: Download multiple files
+      description: Download a compressed archive of multiple files
+      operationId: 3eaf3fe292237c52cee8aab080f2b3b2
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: id[]
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/files/{file_id}/thumbnail:
+    get:
+      tags:
+      - Files
+      summary: Get a file's thumbnail view
+      description: Files Thumbnail
+      operationId: 429cab1e316e3c670ca61b1ff8f3ee9b
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: file_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/files/{file_id}/download:
+    get:
+      tags:
+      - Files
+      summary: Download a file
+      description: Files Download
+      operationId: 4f727a9eb4e760b30067891fda3a96a3
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: file_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/files/{file_id}/view:
+    get:
+      tags:
+      - Files
+      summary: View a file
+      description: Files Thumbnail
+      operationId: 983820156a1045187e80c212c2150a14
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: file_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

@@ -1,0 +1,325 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Airspace API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Airspace
+  description: Airspace
+paths:
+  /v1/airspace/advisories:
+    get:
+      tags:
+      - Airspace
+      summary: Gets advisories close to a given lat / lng
+      description: Gets advisories close to a given lat / lng
+      operationId: 7f9bbad943443bcb2ae82013acdba86e
+      parameters:
+      - name: lng
+        in: query
+        schema:
+          type: number
+        example: '-97.6676542081379'
+      - name: lat
+        in: query
+        schema:
+          type: number
+        example: '30.15616435627915'
+      - name: advisory_types[]
+        in: query
+        description: Array of airspace advisory types to limit the request to. Providing nothing will return everything
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - faa_airports
+            - faa_airspace_boundaries
+            - faa_class_airspace
+            - faa_stadiums
+            - faa_sua
+            - faa_nsufrs
+            - faa_nsufrs_pt
+            - faa_tfrs
+            - faa_uasfms
+            - faa_identification_areas
+            - faa_recreational_flyer_sites
+            - faa_military_training_routes
+            - geoportal_advisories
+            - local_fix
+            - national_parks
+            - airspace-italy
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Airspace
+      summary: Gets advisories within and close to a Polygon or Point feature
+      description: Gets advisories within and close to a Polygon or Point feature
+      operationId: de5e30e2a9f12597fa8c9abf9ab53f2d
+      parameters:
+      - name: advisory_types[]
+        in: query
+        description: Array of airspace advisory types to limit the request to. Providing nothing will return everything
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - faa_airports
+            - faa_airspace_boundaries
+            - faa_class_airspace
+            - faa_stadiums
+            - faa_sua
+            - faa_nsufrs
+            - faa_nsufrs_pt
+            - faa_tfrs
+            - faa_uasfms
+            - faa_identification_areas
+            - faa_recreational_flyer_sites
+            - faa_military_training_routes
+            - geoportal_advisories
+            - national_parks
+            - airspace-italy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/advisory_polygon'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+  /v1/airspace/weather:
+    get:
+      tags:
+      - Airspace
+      summary: Gets weather close to a given lat / lng
+      description: Gets weather close to a given lat / lng
+      operationId: 0e20bc62af934af69944b83534177aab
+      parameters:
+      - name: lng
+        in: query
+        schema:
+          type: number
+        example: '-97.6676542081379'
+      - name: lat
+        in: query
+        schema:
+          type: number
+        example: '30.15616435627915'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+  /v1/airspace/layers:
+    get:
+      tags:
+      - Airspace
+      summary: Return available map layers and sources.
+      description: Get a list of all available layers and sources to be added to a mapping client like Mapbox.
+      operationId: 8c1b1f6fe6014f33386cc15294f474dc
+      parameters:
+      - name: region
+        in: query
+        description: Airspace region for request, available values are 'us' and 'italy', defaults to 'us'.
+        schema:
+          type: string
+        example: us
+      - name: context
+        in: query
+        description: Specific application context to filter layers by ie 'airaware'
+        schema:
+          type: string
+      - name: appends[]
+        in: query
+        description: array of model names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - search_options
+            - map_styles
+            - layers.preview_properties
+      - name: data_formats[]
+        in: query
+        description: array of data formats to return, defaults to 'vector'
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - geojson
+            - raster-dem
+            - vector
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/airspace/advisories:
+    get:
+      tags:
+      - Airspace
+      summary: Gets advisories close to a given lat / lng
+      description: Gets advisories close to a given lat / lng
+      operationId: 3bbaba2a7b2f4092228371cbb79a9c03
+      parameters:
+      - name: account_id
+        in: path
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: lng
+        in: query
+        schema:
+          type: number
+        example: '-97.6676542081379'
+      - name: lat
+        in: query
+        schema:
+          type: number
+        example: '30.15616435627915'
+      - name: advisory_types[]
+        in: query
+        description: Array of airspace advisory types to limit the request to. Providing nothing will return everything
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - faa_airports
+            - faa_airspace_boundaries
+            - faa_class_airspace
+            - faa_stadiums
+            - faa_sua
+            - faa_nsufrs
+            - faa_nsufrs_pt
+            - faa_tfrs
+            - faa_uasfms
+            - faa_identification_areas
+            - faa_recreational_flyer_sites
+            - faa_military_training_routes
+            - geoportal_advisories
+            - local_fix
+            - national_parks
+            - airspace-italy
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/airspace/layers:
+    get:
+      tags:
+      - Airspace
+      summary: Get account layers
+      description: Get account layers
+      operationId: a83906a73234eda56774a0d466514428
+      parameters:
+      - name: account_id
+        in: path
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: context
+        in: query
+        description: Specific application context to filter layers by ie 'airaware'
+        schema:
+          type: string
+      - name: appends[]
+        in: query
+        description: array of model names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - search_options
+            - map_styles
+            - layers.preview_properties
+      - name: data_formats[]
+        in: query
+        description: array of data formats to return, defaults to 'vector'
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - geojson
+            - raster-dem
+            - vector
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+  /v1/account/{account_id}/airspace/search:
+    get:
+      tags:
+      - Airspace
+      summary: Custom Airspace Search
+      description: Custom Airspace Search
+      operationId: be0dfb3e12d8d422aa00b72ba6d8fed2
+      parameters:
+      - name: account_id
+        in: path
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: type
+        in: query
+        description: search type
+        schema:
+          type: string
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+  /v1/airspace/search:
+    get:
+      tags:
+      - Airspace
+      summary: Custom Airspace Search
+      description: Custom Airspace Search
+      operationId: ef20e4748dbd3d1207b9f6b447667a47
+      parameters:
+      - name: type
+        in: query
+        description: search type
+        schema:
+          type: string
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

@@ -1,0 +1,361 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Aircraft API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Aircraft
+  description: Aircraft
+paths:
+  /v1/account/{account_id}/aircraft:
+    get:
+      tags:
+      - Aircraft
+      summary: Get all aircraft
+      description: Gets all aircraft tied to the account.
+      operationId: 144fb754512ac7c2110626927a85d683
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: search
+        in: query
+        description: Search by identifier, model, manufacturer, serial_number, internal_serial_number, faa_drone_id.
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+          enum:
+          - id
+          - identifier
+          - aircraft_type
+          - manufacturer
+          - model
+          - serial_number
+          - firmware_version
+          - created_at
+          - updated_at
+          - airworthy
+          - weight_in_grams
+          - faa_drone_id
+          - total_flight_hours
+          - last_flown
+          - flight_count
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: retired
+        in: query
+        schema:
+          type: boolean
+        example: false
+      - name: remote_id_registered
+        in: query
+        schema:
+          type: boolean
+      - name: remote_id_type[]
+        in: query
+        description: A list of remote id types to filter to.
+        schema:
+          type: array
+          items:
+            description: remote_id_type
+            type: string
+            enum:
+            - all
+            - drone
+            - fria
+            - module
+            - unknown
+      - name: tags_required
+        in: query
+        description: When true, all tags must be connected to the object
+        schema:
+          type: boolean
+      - name: user_id
+        in: query
+        description: Id of user to filter by
+        schema:
+          type: integer
+      - name: tags[]
+        in: query
+        description: array of tag ids
+        schema:
+          type: array
+          items:
+            description: A tag id
+            type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - schedules
+            - tags
+            - total_flight_hours
+            - user
+            - user.is_retired
+            - flight_count
+            - last_flown
+            - maintenance_count
+            - crash_repair_count
+            - incident_count
+            - is_compliant
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Aircraft
+      summary: Create an aircraft
+      description: Create an aircraft
+      operationId: 2a82746dc05d32f9cdd38edc1f2d106b
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - schedules
+            - tags
+            - total_flight_hours
+            - user
+            - user.is_retired
+            - flight_count
+            - last_flown
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/aircraft'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/aircraft/{aircraft_id}:
+    get:
+      tags:
+      - Aircraft
+      summary: Get an aircraft
+      description: Get an aircraft
+      operationId: a5b57ef361f288cbd9da2627958bf7da
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - schedules
+            - tags
+            - total_flight_hours
+            - user
+            - user.is_retired
+            - flight_count
+            - last_flown
+            - maintenance_count
+            - crash_repair_count
+            - incident_count
+            - is_compliant
+      - name: aircraft_id
+        in: path
+        description: Aircraft ID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Aircraft
+      summary: Update an aircraft.
+      description: Update an aircraft
+      operationId: bb90879f6e85419ccb2ad7c428aa82e1
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - schedules
+            - tags
+            - total_flight_hours
+            - user
+            - user.is_retired
+            - flight_count
+            - last_flown
+      - name: aircraft_id
+        in: path
+        description: Aircraft ID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/aircraft'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    delete:
+      tags:
+      - Aircraft
+      summary: Delete an aircraft
+      description: Delete an aircraft
+      operationId: 2feab9e3c6acfdef643bf646428fa39a
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: aircraft_id
+        in: path
+        description: Aircraft ID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '204':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/aircraft/models:
+    get:
+      tags:
+      - Aircraft
+      summary: List account specific aircraft models
+      description: List account specific aircraft models
+      operationId: f09ce101fd127ad962a87bb734bd4c6d
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/aircraft/manufacturers:
+    get:
+      tags:
+      - Aircraft
+      summary: List all aircraft manufacturers
+      description: List all aircraft manufacturers
+      operationId: 4a5cfd1f66c5fd17a703c4d2152a05a7
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/aircraft/models:
+    get:
+      tags:
+      - Aircraft
+      summary: List of aircraft models
+      description: List of aircraft models
+      operationId: 7a46afea671cc1964b06ad145ff35e32
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

@@ -1,0 +1,248 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Tag Groups API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Tag Groups
+  description: Tag Groups
+paths:
+  /v1/account/{account_id}/tag-groups:
+    get:
+      tags:
+      - Tag Groups
+      summary: Get tag groups
+      description: Get tag groups
+      operationId: b48dfdcb84fccd997cf9d2cd41582892
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+          enum:
+          - id
+          - name
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - tags
+      - name: applies_to[]
+        in: query
+        description: array of models you want to filter tag by
+        schema:
+          $ref: '#components/schemas/allowed_model_list'
+      - name: exclude_autotags
+        in: query
+        description: Exclude tag groups that have automatic tags (autotags).
+        required: false
+        schema:
+          description: Set to 'true' to exclude tag groups with autotags. Set to 'false' to include only tag groups with autotags.
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - aircrafts
+          - flights
+          - missions
+          - users
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Tag Groups
+      summary: Create a tag group
+      description: Create a tag group
+      operationId: 6645211fea72e92ecbf3bbd6bf84dc82
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/tag_group'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '201':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/tag-groups/{tag_group_id}:
+    get:
+      tags:
+      - Tag Groups
+      summary: Get a tag group
+      description: Get a tag group
+      operationId: a50cfdab488e7bda21fde6e1202b552f
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: tag_group_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - tags
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Tag Groups
+      summary: Update a tag group
+      description: Update a tag group
+      operationId: 9655d138c94698a19bde4ec2e908455a
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/account_id'
+      - name: tag_group_id
+        in: path
+        description: The id of the tag group.
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/tag_group'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    delete:
+      tags:
+      - Tag Groups
+      summary: Delete a tag group
+      description: This will completely remove the tag group and any associations with the tag group. It will not delete the associated objects.
+      operationId: c18bae793aa472939cff4dee6fc0f0e8
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: tag_group_id
+        in: path
+        description: The id of the tag group.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '204':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/tag-groups/available-models:
+    get:
+      tags:
+      - Tag Groups
+      summary: Get a list of allowed models to attach a tag to
+      description: Get a list of allowed models to attach a tag to.
+      operationId: 46576643094f500b985d7679470fddae
+      responses:
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

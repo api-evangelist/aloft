@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Notify & Fly API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Notify & Fly
+  description: Notify & Fly
+paths:
+  /v1/account/{account_id}/flight-notifications/{flight_notification_id}/end:
+    patch:
+      tags:
+      - Notify & Fly
+      summary: End a flight notification
+      description: End a flight notification
+      operationId: b8b4b08218e2367457b62fecf4f3dc86
+      parameters:
+      - name: account_id
+        in: path
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: flight_notification_id
+        in: path
+        schema:
+          type: string
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            description: A list of models to attach
+            type: string
+            enum:
+            - pilot
+            - aircraft
+      responses:
+        '201':
+          description: Successful operation
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

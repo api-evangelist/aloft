@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Accounts
+  description: Accounts
+paths:
+  /v1/accounts:
+    get:
+      tags:
+      - Accounts
+      summary: Get account list.
+      description: Retrieves all accounts the user has access to.
+      operationId: 085ff2f7d41035dd3edb885d8142f173
+      parameters:
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+          enum:
+          - account_name
+          - created_at
+          - updated_at
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - default_role
+            - features
+            - subscription_status
+            - expiring_soon
+            - tokens
+            - user_count
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+  /v1/accounts/{account_id}/delete:
+    post:
+      tags:
+      - Accounts
+      summary: Request account deletion
+      description: Request account deletion
+      operationId: ec52cf9961150c4408d0cfd1ae1b0850
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/accounts/{account_id}/settings:
+    put:
+      tags:
+      - Accounts
+      summary: Update account settings
+      description: Update account settings
+      operationId: 359b66d3ebb4a0ce9a36444bdeb82949
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                account_settings:
+                  type: array
+                  items:
+                    properties:
+                      key:
+                        type: string
+                        example: forceStream
+                      value:
+                        type: string
+                        example: 'true'
+                    type: object
+                sharing_settings:
+                  type: array
+                  items:
+                    properties:
+                      key:
+                        type: string
+                        example: missions
+                      value:
+                        type: string
+                        example: anonymous
+                    type: object
+                account_name:
+                  type: string
+              type: object
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

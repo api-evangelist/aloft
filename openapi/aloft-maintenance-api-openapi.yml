@@ -1,0 +1,345 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Maintenance API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Maintenance
+  description: Maintenance
+paths:
+  /v1/account/{account_id}/maintenance:
+    get:
+      tags:
+      - Maintenance
+      summary: Gets maintenance records
+      description: Gets maintenance records
+      operationId: 22747258ed6cac1ca0944dbe578e2bf7
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: aircraft_id
+        in: query
+        description: aircraft id
+        schema:
+          type: integer
+      - name: tags_required
+        in: query
+        description: When true, all tags must be connected to the object
+        schema:
+          type: boolean
+      - name: tags[]
+        in: query
+        description: array of tag ids
+        schema:
+          type: array
+          items:
+            description: A tag id
+            type: integer
+      - name: status
+        in: query
+        description: Current status of the maintenance record
+        schema:
+          type: string
+      - name: reason
+        in: query
+        description: Reason for the maintenance record
+        schema:
+          type: array
+          items:
+            description: A maintenance reason value
+            type: string
+      - name: type
+        in: query
+        description: Type for the maintenance record
+        schema:
+          type: array
+          items:
+            description: A maintenance type value
+            type: string
+      - name: aircraft_make
+        in: query
+        description: Manufacturer of the aircraft
+        schema:
+          type: array
+          items:
+            description: An aircraft manufacturer value
+            type: string
+      - name: aircraft_model
+        in: query
+        description: Model of the aircraft
+        schema:
+          type: array
+          items:
+            description: An aircraft model value
+            type: string
+      - name: aircraft_name
+        in: query
+        description: Name of the aircraft in the maintenance record
+        schema:
+          type: string
+      - name: start_date
+        in: query
+        description: Start date (timestamp) of the maintenance record
+        schema:
+          type: integer
+      - name: end_date
+        in: query
+        description: End date (timestamp) of the maintenance record
+        schema:
+          type: integer
+      - name: because_crash
+        in: query
+        description: Whether the maintenance record was result of a crash
+        schema:
+          type: boolean
+      - name: user
+        in: query
+        description: User ID
+        schema:
+          type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - account
+            - aircraft
+            - aircraft.is_retired
+            - components
+            - incident
+            - incident.aircraft
+            - flight
+            - flight.user
+            - files
+            - operator
+            - operator.is_retired
+            - user
+            - tags
+            - verified_by
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Maintenance
+      summary: Create maintenance record
+      description: Create maintenance record
+      operationId: 99c894720dc79465f658b11a9ca3a3c8
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - account
+            - aircraft
+            - aircraft.is_retired
+            - components
+            - incident
+            - incident.aircraft
+            - flight
+            - flight.user
+            - files
+            - operator
+            - operator.is_retired
+            - user
+            - tags
+            - verified_by
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/maintenance'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/maintenance/{maintenance_id}:
+    get:
+      tags:
+      - Maintenance
+      summary: Get a maintenance record
+      description: Get a maintenance record
+      operationId: a3cae959a5e9679610b63f291466209c
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - account
+            - aircraft
+            - aircraft.is_retired
+            - components
+            - incident
+            - incident.aircraft
+            - flight
+            - flight.user
+            - files
+            - operator
+            - operator.is_retired
+            - user
+            - tags
+            - verified_by
+      - name: maintenance_id
+        in: path
+        description: maintenance id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Maintenance
+      summary: Update a maintenance record
+      description: Update a maintenance record
+      operationId: 8610311405f03c1d6992552c8ee373e7
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - account
+            - aircraft
+            - aircraft.is_retired
+            - components
+            - incident
+            - incident.aircraft
+            - flight
+            - flight.user
+            - files
+            - operator
+            - operator.is_retired
+            - user
+            - tags
+            - verified_by
+      - name: maintenance_id
+        in: path
+        description: Maintenance record ID.
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/maintenance'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    delete:
+      tags:
+      - Maintenance
+      summary: Delete a maintenance record
+      description: Delete a maintenance record
+      operationId: f1fe3053ae2ec8e4e9ae5b9fc9849b68
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: maintenance_id
+        in: path
+        description: Maintenance record id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer

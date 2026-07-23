@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: searched
+note: >-
+  Probed the standard /.well-known/ discovery surface on the Aloft website and
+  API hosts. None returned a document (all 404). Recorded for auditability; no
+  WellKnown/SecurityTxt pointer is emitted since nothing was found.
+hosts:
+  - https://www.aloft.ai
+  - https://api.aloft.ai
+documents:
+  - path: /.well-known/security.txt
+    host: https://www.aloft.ai
+    status: 404
+  - path: /.well-known/security.txt
+    host: https://api.aloft.ai
+    status: 404
+  - path: /.well-known/openid-configuration
+    host: https://api.aloft.ai
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    host: https://api.aloft.ai
+    status: 404
+  - path: /.well-known/api-catalog
+    host: https://www.aloft.ai
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    host: https://api.aloft.ai
+    status: 404

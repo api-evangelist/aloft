@@ -1,0 +1,220 @@
+openapi: 3.0.0
+info:
+  title: Aloft API V1 Accounts Tags API
+  contact:
+    email: support@aloft.ai
+  version: 1.0.0
+  description: Accounts
+tags:
+- name: Tags
+  description: Tags
+paths:
+  /v1/account/{account_id}/tags:
+    get:
+      tags:
+      - Tags
+      summary: Gets tags
+      description: Gets tags
+      operationId: e17d072e22a3b6e124f5f4fb0b2a474b
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: applies_to[]
+        in: query
+        description: Array of models you want to filter tag groups by
+        schema:
+          $ref: '#components/schemas/allowed_model_list'
+      - name: order_by
+        in: query
+        description: The field to order the data by
+        schema:
+          type: string
+          enum:
+          - id
+          - name
+      - name: order
+        in: query
+        schema:
+          $ref: '#components/schemas/order_direction'
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_length
+        in: query
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - group
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+          content:
+            application/json: {}
+            application/csv: {}
+      security:
+      - Aloft Token: []
+    post:
+      tags:
+      - Tags
+      summary: Create a tag
+      description: Create a tag
+      operationId: a18cf2cd40a13291a797b221ecb5c9c0
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - group
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/tag'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '201':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+  /v1/account/{account_id}/tags/{tag_id}:
+    get:
+      tags:
+      - Tags
+      summary: Gets a single tag
+      description: Gets a single tag
+      operationId: 36f25df4fa3027e844587c0efac637c5
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: tag_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - group
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    put:
+      tags:
+      - Tags
+      summary: Updates a tag
+      description: Updates a tag
+      operationId: b6fcfdd2f47d4da1775f6e7ed1f9eed0
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/account_id'
+      - name: tag_id
+        in: path
+        description: The id of the tag.
+        required: true
+        schema:
+          type: integer
+      - name: appends[]
+        in: query
+        description: Array of appendable resource names
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - group
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/tag'
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '422':
+          description: Unprocessable Content
+        '200':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+    delete:
+      tags:
+      - Tags
+      summary: Delete a tag
+      description: This will completely remove the tag and any associations with the tag.  It will not delete the associated objects.
+      operationId: b9d9a17f52d985bc493d098dafefa30c
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          $ref: '#components/schemas/model_id'
+      - name: tag_id
+        in: path
+        description: The id of the tag.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '403':
+          description: Access Denied
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '204':
+          description: Successful operation
+      security:
+      - Aloft Token: []
+components:
+  securitySchemes:
+    Aloft Token:
+      type: http
+      name: Aloft Token
+      in: header
+      scheme: bearer
