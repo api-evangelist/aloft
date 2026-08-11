@@ -554,6 +554,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/aloft-openapi-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/aloft-agentic-access.yml
 - type: Authentication
