@@ -1,0 +1,185 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts Alerts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/alerts",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_length",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type[]",
+                "value": "",
+                "type": "query",
+                "description": "A list of alert types"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field to order the data by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get alerts"
+        },
+        {
+          "info": {
+            "name": "Create an alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/alerts",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an alert"
+        },
+        {
+          "info": {
+            "name": "Get an alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/alerts/:alert_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path",
+                "description": "Alert Id"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              }
+            ]
+          },
+          "docs": "Get an alert"
+        },
+        {
+          "info": {
+            "name": "Update an alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.aloft.ai/v1/account/:account_id/alerts/:alert_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path",
+                "description": "Alert Id"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an alert"
+        },
+        {
+          "info": {
+            "name": "Delete an alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aloft.ai/v1/account/:account_id/alerts/:alert_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path",
+                "description": "Alert Id."
+              }
+            ]
+          },
+          "docs": "Delete an alert"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

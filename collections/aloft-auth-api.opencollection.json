@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts Auth API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/profile",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get user profile"
+        },
+        {
+          "info": {
+            "name": "End user session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/logout",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "End user session. If a refresh token is provided, all access tokens created with it will be blocklisted"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

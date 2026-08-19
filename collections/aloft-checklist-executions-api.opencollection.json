@@ -1,0 +1,202 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts Checklist Executions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checklist Executions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all checklist executions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/checklist-executions",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "checklist_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "stop",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search by identifier & source."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field to order the data by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_length",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all checklist executions"
+        },
+        {
+          "info": {
+            "name": "Create a checklist execution",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/checklist-executions",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a checklist execution"
+        },
+        {
+          "info": {
+            "name": "Gets checklist executions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/checklist-executions/:checklist_execution_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "checklist_execution_id",
+                "value": "",
+                "type": "path",
+                "description": "Checklist Execution ID"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets checklist executions"
+        },
+        {
+          "info": {
+            "name": "Create a checklist execution",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.aloft.ai/v1/account/:account_id/checklist-executions/:checklist_execution_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              },
+              {
+                "name": "checklist_execution_id",
+                "value": "",
+                "type": "path",
+                "description": "Checklist Execution ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a checklist execution"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

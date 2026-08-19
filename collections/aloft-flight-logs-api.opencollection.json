@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts Flight Logs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flight Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Determines if DJI Flight logs have already been imported by file name.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/flight-logs/detect-duplicates",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Determines if DJI Flight logs have already been imported by file name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

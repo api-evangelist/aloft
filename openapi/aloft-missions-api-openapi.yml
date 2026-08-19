@@ -35,7 +35,8 @@ paths:
           type: string
       - name: order_by
         in: query
-        description: The field to order the data by. Distance requires you to provide a center parameter to be used.
+        description: The field to order the data by. Distance requires you to provide a center parameter
+          to be used.
         schema:
           type: string
           enum:
@@ -128,7 +129,8 @@ paths:
           type: string
       - name: has_laanc_auth
         in: query
-        description: When true, only return missions with LAANC authorizations. When false, only return missions without LAANC authorizations.
+        description: When true, only return missions with LAANC authorizations. When false, only return
+          missions without LAANC authorizations.
         schema:
           type: boolean
       - name: appends[]
@@ -311,7 +313,8 @@ paths:
             - airspace_clearances.pilot
       - name: center
         in: query
-        description: 'Latitude and longitude to use when calculating distance. Ex: ''36.1627,-86.7816''. Required for distance to be appended.'
+        description: 'Latitude and longitude to use when calculating distance. Ex: ''36.1627,-86.7816''.
+          Required for distance to be appended.'
         schema:
           type: string
       - name: mission_id
@@ -480,7 +483,8 @@ paths:
           type: integer
       - name: reset_planning
         in: query
-        description: Delete all the planning checklist execution, risk assessment executions, and workflow executions.
+        description: Delete all the planning checklist execution, risk assessment executions, and workflow
+          executions.
         required: true
         schema:
           type: boolean
@@ -544,3 +548,6 @@ components:
       name: Aloft Token
       in: header
       scheme: bearer
+servers:
+- url: https://api.aloft.ai
+  description: Base URL reconciled from apis.yml

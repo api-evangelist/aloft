@@ -2,10 +2,9 @@ generated: '2026-07-18'
 method: derived
 status: candidate
 source: openapi/aloft-openapi-original.json
-note: 'No official hosted/remote Aloft MCP server was found. This is a DERIVED candidate:
-  the Aloft API exposes 180 operations across 36 resource groups that could be surfaced
-  as MCP tools (one tool per operationId). Aloft operationIds are opaque hashes; a
-  real server would assign human-readable tool names.'
+note: 'No official hosted/remote Aloft MCP server was found. This is a DERIVED candidate: the Aloft API
+  exposes 180 operations across 36 resource groups that could be surfaced as MCP tools (one tool per operationId).
+  Aloft operationIds are opaque hashes; a real server would assign human-readable tool names.'
 server:
   name: aloft
   transport: http
@@ -90,3 +89,8 @@ tool_groups:
   operations: 7
 - tag: Workflows
   operations: 5
+deployment:
+  mode: none
+  verified: derived
+  checked: '2026-08-12'
+  source: catalog MCP census

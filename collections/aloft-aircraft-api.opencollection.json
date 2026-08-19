@@ -1,0 +1,291 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts Aircraft API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Aircraft",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all aircraft",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/aircraft",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search by identifier, model, manufacturer, serial_number, internal_serial_number, faa_drone_id."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_length",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field to order the data by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "retired",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "remote_id_registered",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "remote_id_type[]",
+                "value": "",
+                "type": "query",
+                "description": "A list of remote id types to filter to."
+              },
+              {
+                "name": "tags_required",
+                "value": "",
+                "type": "query",
+                "description": "When true, all tags must be connected to the object"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Id of user to filter by"
+              },
+              {
+                "name": "tags[]",
+                "value": "",
+                "type": "query",
+                "description": "array of tag ids"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets all aircraft tied to the account."
+        },
+        {
+          "info": {
+            "name": "Create an aircraft",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/aircraft",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create an aircraft"
+        },
+        {
+          "info": {
+            "name": "Get an aircraft",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/aircraft/:aircraft_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              },
+              {
+                "name": "aircraft_id",
+                "value": "",
+                "type": "path",
+                "description": "Aircraft ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get an aircraft"
+        },
+        {
+          "info": {
+            "name": "Update an aircraft.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.aloft.ai/v1/account/:account_id/aircraft/:aircraft_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              },
+              {
+                "name": "aircraft_id",
+                "value": "",
+                "type": "path",
+                "description": "Aircraft ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an aircraft"
+        },
+        {
+          "info": {
+            "name": "Delete an aircraft",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aloft.ai/v1/account/:account_id/aircraft/:aircraft_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "aircraft_id",
+                "value": "",
+                "type": "path",
+                "description": "Aircraft ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an aircraft"
+        },
+        {
+          "info": {
+            "name": "List account specific aircraft models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/aircraft/models",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List account specific aircraft models"
+        },
+        {
+          "info": {
+            "name": "List all aircraft manufacturers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/aircraft/manufacturers",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all aircraft manufacturers"
+        },
+        {
+          "info": {
+            "name": "List of aircraft models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/aircraft/models",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List of aircraft models"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -29,7 +29,8 @@ paths:
         example: '30.15616435627915'
       - name: advisory_types[]
         in: query
-        description: Array of airspace advisory types to limit the request to. Providing nothing will return everything
+        description: Array of airspace advisory types to limit the request to. Providing nothing will
+          return everything
         schema:
           type: array
           items:
@@ -67,7 +68,8 @@ paths:
       parameters:
       - name: advisory_types[]
         in: query
-        description: Array of airspace advisory types to limit the request to. Providing nothing will return everything
+        description: Array of airspace advisory types to limit the request to. Providing nothing will
+          return everything
         schema:
           type: array
           items:
@@ -130,7 +132,8 @@ paths:
       tags:
       - Airspace
       summary: Return available map layers and sources.
-      description: Get a list of all available layers and sources to be added to a mapping client like Mapbox.
+      description: Get a list of all available layers and sources to be added to a mapping client like
+        Mapbox.
       operationId: 8c1b1f6fe6014f33386cc15294f474dc
       parameters:
       - name: region
@@ -197,7 +200,8 @@ paths:
         example: '30.15616435627915'
       - name: advisory_types[]
         in: query
-        description: Array of airspace advisory types to limit the request to. Providing nothing will return everything
+        description: Array of airspace advisory types to limit the request to. Providing nothing will
+          return everything
         schema:
           type: array
           items:
@@ -323,3 +327,6 @@ components:
       name: Aloft Token
       in: header
       scheme: bearer
+servers:
+- url: https://api.aloft.ai
+  description: Base URL reconciled from apis.yml

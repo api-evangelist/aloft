@@ -267,3 +267,6 @@ components:
       name: Aloft Token
       in: header
       scheme: bearer
+servers:
+- url: https://api.aloft.ai
+  description: Base URL reconciled from apis.yml

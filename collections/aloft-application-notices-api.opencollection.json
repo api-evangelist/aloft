@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts Application Notices API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Application Notices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all application notices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/notices",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get all active laanc emergency application notices"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

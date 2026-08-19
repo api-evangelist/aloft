@@ -1,0 +1,356 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts Missions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Missions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get missions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/missions",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "The user id of the mission owner"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search by the title field."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field to order the data by. Distance requires you to provide a center parameter to be used."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "airspace[]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "starts_at_before",
+                "value": "",
+                "type": "query",
+                "description": "The starts_at_before timestamp must be greater than the starts_at timestamp."
+              },
+              {
+                "name": "starts_at_after",
+                "value": "",
+                "type": "query",
+                "description": "The starts_at_after timestamp must be less than the starts_at timestamp."
+              },
+              {
+                "name": "status[]",
+                "value": "",
+                "type": "query",
+                "description": "A list of mission status"
+              },
+              {
+                "name": "tags_required",
+                "value": "",
+                "type": "query",
+                "description": "When true, all tags must be connected to the object"
+              },
+              {
+                "name": "tags[]",
+                "value": "",
+                "type": "query",
+                "description": "array of tag ids"
+              },
+              {
+                "name": "mission_participants[]",
+                "value": "",
+                "type": "query",
+                "description": "array of user ids"
+              },
+              {
+                "name": "withBounds",
+                "value": "",
+                "type": "query",
+                "description": "Puts the SW and NE Lat Lng into the response's meta data"
+              },
+              {
+                "name": "center",
+                "value": "",
+                "type": "query",
+                "description": "Latitude and longitude to sort the distance by when ordering by distance. Ex: '36.1627,-86.7816'"
+              },
+              {
+                "name": "bounds",
+                "value": "",
+                "type": "query",
+                "description": "SW and NE Lat Lng for drawing a bounding box. Ex: '36.1065372323778,-86.83319091796875,-86.69998168945312,36.2077150185580'"
+              },
+              {
+                "name": "has_laanc_auth",
+                "value": "",
+                "type": "query",
+                "description": "When true, only return missions with LAANC authorizations. When false, only return missions without LAANC authorizations."
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_length",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a list of missions."
+        },
+        {
+          "info": {
+            "name": "Create a mission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/missions",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a mission"
+        },
+        {
+          "info": {
+            "name": "Get a mission",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/missions/:mission_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              },
+              {
+                "name": "center",
+                "value": "",
+                "type": "query",
+                "description": "Latitude and longitude to use when calculating distance. Ex: '36.1627,-86.7816'. Required for distance to be appended."
+              },
+              {
+                "name": "mission_id",
+                "value": "",
+                "type": "path",
+                "description": "The mission id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a mission"
+        },
+        {
+          "info": {
+            "name": "Update a mission",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.aloft.ai/v1/account/:account_id/missions/:mission_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "mission_id",
+                "value": "",
+                "type": "path",
+                "description": "The mission id"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a mission"
+        },
+        {
+          "info": {
+            "name": "Delete a mission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aloft.ai/v1/account/:account_id/missions/:mission_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "mission_id",
+                "value": "",
+                "type": "path",
+                "description": "The mission id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a mission"
+        },
+        {
+          "info": {
+            "name": "Transfer the state of a mission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/missions/:mission_uuid/offline-transitions/completed",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "mission_uuid",
+                "value": "",
+                "type": "path",
+                "description": "The mission UUID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Transfer the state of a mission to complete when working in offline mode."
+        },
+        {
+          "info": {
+            "name": "Transfer the state of a mission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/missions/:mission_id/:to_state",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "mission_id",
+                "value": "",
+                "type": "path",
+                "description": "The mission id"
+              },
+              {
+                "name": "reset_planning",
+                "value": "",
+                "type": "query",
+                "description": "Delete all the planning checklist execution, risk assessment executions, and workflow executions."
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              },
+              {
+                "name": "to_state",
+                "value": "",
+                "type": "path",
+                "description": "The state of the mission."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Transfer the state of a mission"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

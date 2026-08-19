@@ -1,0 +1,324 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts Flight Sessions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flight Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all flight sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/flight-sessions",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "status[]",
+                "value": "",
+                "type": "query",
+                "description": "A list of flight session statuses"
+              },
+              {
+                "name": "origin_system[]",
+                "value": "",
+                "type": "query",
+                "description": "System the flight session originated from"
+              },
+              {
+                "name": "origin_method[]",
+                "value": "",
+                "type": "query",
+                "description": "Method the flights were flown with."
+              },
+              {
+                "name": "origin_env[]",
+                "value": "",
+                "type": "query",
+                "description": "Environment the flight was flown on"
+              },
+              {
+                "name": "starts_at_before",
+                "value": "",
+                "type": "query",
+                "description": "The starts_at_before date must be greater than the starts_at date."
+              },
+              {
+                "name": "starts_at_after",
+                "value": "",
+                "type": "query",
+                "description": "The starts_at_after date must be less than the starts_at date."
+              },
+              {
+                "name": "open",
+                "value": "",
+                "type": "query",
+                "description": "Returns only open flight sessions if true."
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mission_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workflow_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field to order the data by."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_length",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all flight sessions"
+        },
+        {
+          "info": {
+            "name": "Create a flight session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/flight-sessions",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a flight session"
+        },
+        {
+          "info": {
+            "name": "Get a flight session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/flight-sessions/:flight_session_uuid",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "flight_session_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Flight session uuid."
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              }
+            ]
+          },
+          "docs": "Get a flight session"
+        },
+        {
+          "info": {
+            "name": "Delete a flight session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aloft.ai/v1/account/:account_id/flight-sessions/:flight_session_uuid",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "flight_session_uuid",
+                "value": "",
+                "type": "path",
+                "description": "flight session Id."
+              }
+            ]
+          },
+          "docs": "Delete a flight session"
+        },
+        {
+          "info": {
+            "name": "Create a flight on a flight session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/flight-sessions/:flight_session_uuid/flights",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "flight_session_uuid",
+                "value": "",
+                "type": "path",
+                "description": "flight session Id."
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "flight_uuid",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a flight on a flight session"
+        },
+        {
+          "info": {
+            "name": "Import media on flight",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/flight-sessions/:flight_session_uuid/media",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "flight_session_uuid",
+                "value": "",
+                "type": "path",
+                "description": "flight session Id."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "flight_uuid",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "media_uuid",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Import media for a flight on a flight session"
+        },
+        {
+          "info": {
+            "name": "Create a flight event.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/flight-session-events",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a flight event"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

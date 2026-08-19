@@ -1,0 +1,263 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts Airspace API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Airspace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets advisories close to a given lat / lng",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/airspace/advisories",
+            "params": [
+              {
+                "name": "lng",
+                "value": "-97.6676542081379",
+                "type": "query"
+              },
+              {
+                "name": "lat",
+                "value": "30.15616435627915",
+                "type": "query"
+              },
+              {
+                "name": "advisory_types[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of airspace advisory types to limit the request to. Providing nothing will return everything"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets advisories close to a given lat / lng"
+        },
+        {
+          "info": {
+            "name": "Gets advisories within and close to a Polygon or Point feature",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/airspace/advisories",
+            "params": [
+              {
+                "name": "advisory_types[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of airspace advisory types to limit the request to. Providing nothing will return everything"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets advisories within and close to a Polygon or Point feature"
+        },
+        {
+          "info": {
+            "name": "Gets weather close to a given lat / lng",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/airspace/weather",
+            "params": [
+              {
+                "name": "lng",
+                "value": "-97.6676542081379",
+                "type": "query"
+              },
+              {
+                "name": "lat",
+                "value": "30.15616435627915",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets weather close to a given lat / lng"
+        },
+        {
+          "info": {
+            "name": "Return available map layers and sources.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/airspace/layers",
+            "params": [
+              {
+                "name": "region",
+                "value": "us",
+                "type": "query",
+                "description": "Airspace region for request, available values are 'us' and 'italy', defaults to 'us'."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Specific application context to filter layers by ie 'airaware'"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              },
+              {
+                "name": "data_formats[]",
+                "value": "",
+                "type": "query",
+                "description": "array of data formats to return, defaults to 'vector'"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a list of all available layers and sources to be added to a mapping client like Mapbox."
+        },
+        {
+          "info": {
+            "name": "Gets advisories close to a given lat / lng",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/airspace/advisories",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "lng",
+                "value": "-97.6676542081379",
+                "type": "query"
+              },
+              {
+                "name": "lat",
+                "value": "30.15616435627915",
+                "type": "query"
+              },
+              {
+                "name": "advisory_types[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of airspace advisory types to limit the request to. Providing nothing will return everything"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets advisories close to a given lat / lng"
+        },
+        {
+          "info": {
+            "name": "Get account layers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/airspace/layers",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "Specific application context to filter layers by ie 'airaware'"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "array of model names"
+              },
+              {
+                "name": "data_formats[]",
+                "value": "",
+                "type": "query",
+                "description": "array of data formats to return, defaults to 'vector'"
+              }
+            ]
+          },
+          "docs": "Get account layers"
+        },
+        {
+          "info": {
+            "name": "Custom Airspace Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/airspace/search",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "search type"
+              }
+            ]
+          },
+          "docs": "Custom Airspace Search"
+        },
+        {
+          "info": {
+            "name": "Custom Airspace Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/airspace/search",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "search type"
+              }
+            ]
+          },
+          "docs": "Custom Airspace Search"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

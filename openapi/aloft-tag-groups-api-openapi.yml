@@ -61,7 +61,8 @@ paths:
         description: Exclude tag groups that have automatic tags (autotags).
         required: false
         schema:
-          description: Set to 'true' to exclude tag groups with autotags. Set to 'false' to include only tag groups with autotags.
+          description: Set to 'true' to exclude tag groups with autotags. Set to 'false' to include only
+            tag groups with autotags.
           type: string
           enum:
           - 'true'
@@ -200,7 +201,8 @@ paths:
       tags:
       - Tag Groups
       summary: Delete a tag group
-      description: This will completely remove the tag group and any associations with the tag group. It will not delete the associated objects.
+      description: This will completely remove the tag group and any associations with the tag group.
+        It will not delete the associated objects.
       operationId: c18bae793aa472939cff4dee6fc0f0e8
       parameters:
       - name: account_id
@@ -246,3 +248,6 @@ components:
       name: Aloft Token
       in: header
       scheme: bearer
+servers:
+- url: https://api.aloft.ai
+  description: Base URL reconciled from apis.yml

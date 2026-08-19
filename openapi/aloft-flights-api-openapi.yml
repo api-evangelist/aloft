@@ -157,7 +157,8 @@ paths:
             - Authorization
       - name: has_laanc_auth
         in: query
-        description: When true, only return missions with LAANC authorizations. When false, only return missions without LAANC authorizations.
+        description: When true, only return missions with LAANC authorizations. When false, only return
+          missions without LAANC authorizations.
         schema:
           type: boolean
       - name: appends[]
@@ -714,3 +715,6 @@ components:
       name: Aloft Token
       in: header
       scheme: bearer
+servers:
+- url: https://api.aloft.ai
+  description: Base URL reconciled from apis.yml

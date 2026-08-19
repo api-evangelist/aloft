@@ -186,7 +186,8 @@ paths:
       tags:
       - Tags
       summary: Delete a tag
-      description: This will completely remove the tag and any associations with the tag.  It will not delete the associated objects.
+      description: This will completely remove the tag and any associations with the tag.  It will not
+        delete the associated objects.
       operationId: b9d9a17f52d985bc493d098dafefa30c
       parameters:
       - name: account_id
@@ -218,3 +219,6 @@ components:
       name: Aloft Token
       in: header
       scheme: bearer
+servers:
+- url: https://api.aloft.ai
+  description: Base URL reconciled from apis.yml

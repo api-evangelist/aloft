@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts AirMesh API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AirMesh",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verify the AirMesh integration token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/airmesh/token-validation/:token",
+            "headers": [
+              {
+                "name": "X-Airmesh-OEM-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "Connection token"
+              }
+            ]
+          },
+          "docs": "Request for the AirMesh connection token to be validated"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

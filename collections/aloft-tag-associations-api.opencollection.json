@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts Tag Associations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tag Associations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates an association between a tag and an api resource.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/:model_type/:model_id/tag/:tag_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "model_type",
+                "value": "",
+                "type": "path",
+                "description": "The type of model"
+              },
+              {
+                "name": "model_id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the resource"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the tag."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates an association between a tag and an api resource."
+        },
+        {
+          "info": {
+            "name": "Deletes an association between a tag and an api resource.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aloft.ai/v1/account/:account_id/:model_type/:model_id/tag/:tag_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "model_type",
+                "value": "",
+                "type": "path",
+                "description": "The type of model"
+              },
+              {
+                "name": "model_id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the resource"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the tag."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes an association between a tag and an api resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

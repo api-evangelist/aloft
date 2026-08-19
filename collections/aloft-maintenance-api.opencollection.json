@@ -1,0 +1,277 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aloft API V1 Accounts Maintenance API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Maintenance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets maintenance records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/maintenance",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The field to order the data by"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "aircraft_id",
+                "value": "",
+                "type": "query",
+                "description": "aircraft id"
+              },
+              {
+                "name": "tags_required",
+                "value": "",
+                "type": "query",
+                "description": "When true, all tags must be connected to the object"
+              },
+              {
+                "name": "tags[]",
+                "value": "",
+                "type": "query",
+                "description": "array of tag ids"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Current status of the maintenance record"
+              },
+              {
+                "name": "reason",
+                "value": "",
+                "type": "query",
+                "description": "Reason for the maintenance record"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type for the maintenance record"
+              },
+              {
+                "name": "aircraft_make",
+                "value": "",
+                "type": "query",
+                "description": "Manufacturer of the aircraft"
+              },
+              {
+                "name": "aircraft_model",
+                "value": "",
+                "type": "query",
+                "description": "Model of the aircraft"
+              },
+              {
+                "name": "aircraft_name",
+                "value": "",
+                "type": "query",
+                "description": "Name of the aircraft in the maintenance record"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start date (timestamp) of the maintenance record"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End date (timestamp) of the maintenance record"
+              },
+              {
+                "name": "because_crash",
+                "value": "",
+                "type": "query",
+                "description": "Whether the maintenance record was result of a crash"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "User ID"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_length",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets maintenance records"
+        },
+        {
+          "info": {
+            "name": "Create maintenance record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aloft.ai/v1/account/:account_id/maintenance",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create maintenance record"
+        },
+        {
+          "info": {
+            "name": "Get a maintenance record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aloft.ai/v1/account/:account_id/maintenance/:maintenance_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              },
+              {
+                "name": "maintenance_id",
+                "value": "",
+                "type": "path",
+                "description": "maintenance id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a maintenance record"
+        },
+        {
+          "info": {
+            "name": "Update a maintenance record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.aloft.ai/v1/account/:account_id/maintenance/:maintenance_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appends[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of appendable resource names"
+              },
+              {
+                "name": "maintenance_id",
+                "value": "",
+                "type": "path",
+                "description": "Maintenance record ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a maintenance record"
+        },
+        {
+          "info": {
+            "name": "Delete a maintenance record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aloft.ai/v1/account/:account_id/maintenance/:maintenance_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "maintenance_id",
+                "value": "",
+                "type": "path",
+                "description": "Maintenance record id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a maintenance record"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
