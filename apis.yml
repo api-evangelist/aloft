@@ -50,6 +50,8 @@ apis:
   humanURL: https://www.aloft.ai/developer/
   baseURL: https://api.aloft.ai
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -162,6 +164,8 @@ apis:
   humanURL: https://www.aloft.ai/developer/
   baseURL: https://api.aloft.ai
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -176,6 +180,8 @@ apis:
   humanURL: https://www.aloft.ai/developer/
   baseURL: https://api.aloft.ai
   tags:
+  - Autotags
+  tags_raw:
   - Auto Tags
   properties:
   - type: OpenAPI
@@ -288,6 +294,8 @@ apis:
   humanURL: https://www.aloft.ai/developer/
   baseURL: https://api.aloft.ai
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -512,6 +520,8 @@ apis:
   humanURL: https://www.aloft.ai/developer/
   baseURL: https://api.aloft.ai
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -526,6 +536,8 @@ apis:
   humanURL: https://www.aloft.ai/developer/
   baseURL: https://api.aloft.ai
   tags:
+  - Video Streaming
+  tags_raw:
   - VideoStreaming
   properties:
   - type: OpenAPI
