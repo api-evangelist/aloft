@@ -578,6 +578,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/aloft-capability-edges.yml
+  name: Aloft Business Capability Map
 - type: Overlay
   url: overlays/aloft-openapi-overlay.yaml
 - type: AgenticAccess

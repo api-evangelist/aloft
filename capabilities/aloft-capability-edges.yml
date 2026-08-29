@@ -1,0 +1,26 @@
+slug: aloft
+provider: Aloft
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Defense & Aerospace
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Missions
+  spec_file: aloft-missions-api-openapi.yml
+  capability_id: BC-1700
+  capability_id_l1: BC-1700
+  capability_name: Mission Management
+  confidence: 0.8
+  evidence: POST /v1/account/{account_id}/missions — "Create a mission"; POST /v1/account/{account_id}/missions/{mission_id}/{to_state}
+    — "Transfer the state of a mission"
+  reason: Operations create, update and transition the state of flight missions in a UTM/fleet platform
+    — plainly mission management. Split between mission planning (creation) and mission execution (state
+    transitions) is unclear, so only the L1 is asserted.
