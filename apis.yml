@@ -192,7 +192,7 @@ apis:
   humanURL: https://www.aloft.ai/developer/
   baseURL: https://api.aloft.ai
   tags:
-  - Autotags
+  - Auto Tags
   tags_raw:
   - Auto Tags
   properties:
@@ -548,7 +548,7 @@ apis:
   humanURL: https://www.aloft.ai/developer/
   baseURL: https://api.aloft.ai
   tags:
-  - Video Streaming
+  - VideoStreaming
   tags_raw:
   - VideoStreaming
   properties:
