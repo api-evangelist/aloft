@@ -187,22 +187,6 @@ apis:
     url: https://api.aloft.ai/v1/docs
   - type: APIReference
     url: https://api.aloft.ai/v1/docs
-- aid: aloft:aloft-auto-tags-api
-  name: Aloft Auto Tags API
-  description: Auto Tags
-  humanURL: https://www.aloft.ai/developer/
-  baseURL: https://api.aloft.ai
-  tags:
-  - Autotags
-  tags_raw:
-  - Auto Tags
-  properties:
-  - type: OpenAPI
-    url: openapi/aloft-auto-tags-api-openapi.yml
-  - type: Documentation
-    url: https://api.aloft.ai/v1/docs
-  - type: APIReference
-    url: https://api.aloft.ai/v1/docs
 - aid: aloft:aloft-batteries-api
   name: Aloft Batteries API
   description: Batteries
@@ -569,6 +553,20 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/aloft-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://api.aloft.ai/v1/docs
+  - type: APIReference
+    url: https://api.aloft.ai/v1/docs
+- aid: aloft:aloft-autotags-api
+  name: Aloft Autotags API
+  description: Auto Tags
+  humanURL: https://www.aloft.ai/developer/
+  baseURL: https://api.aloft.ai
+  tags:
+  - Autotags
+  properties:
+  - type: OpenAPI
+    url: openapi/aloft-autotags-api-openapi.yml
   - type: Documentation
     url: https://api.aloft.ai/v1/docs
   - type: APIReference
