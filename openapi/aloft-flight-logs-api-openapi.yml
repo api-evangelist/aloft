@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Aloft API V1 Accounts Flight Logs API
+  title: Aloft API V1 Flight Logs API
   contact:
     email: support@aloft.ai
   version: 1.0.0
-  description: Accounts
+  description: Flight Logs
 tags:
 - name: Flight Logs
   description: Flight Logs
@@ -13,7 +13,7 @@ paths:
     post:
       tags:
       - Flight Logs
-      summary: Determines if DJI Flight logs have already been imported by file name.
+      summary: Determines if DJI Flight logs have already been imported by file name
       description: Determines if DJI Flight logs have already been imported by file name.
       operationId: 626acb1dcf47a050d49306446148530e
       parameters:
@@ -38,11 +38,8 @@ paths:
           description: Successful operation
 components:
   securitySchemes:
-    Aloft Token:
+    Aloft_Token:
       type: http
       name: Aloft Token
       in: header
       scheme: bearer
-servers:
-- url: https://api.aloft.ai
-  description: Base URL reconciled from apis.yml

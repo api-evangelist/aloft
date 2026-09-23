@@ -1,20 +1,19 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Aloft API V1 Accounts Auto Tags API
+  title: Aloft API V1 Auto Tags API
   contact:
     email: support@aloft.ai
   version: 1.0.0
-  description: Accounts
+  description: Auto Tags
 tags:
-- name: Auto Tags
+- name: Autotags
   description: Auto Tags
 paths:
   /v1/account/{account_id}/auto-tags:
     get:
       tags:
-      - Auto Tags
+      - Autotags
       summary: Gets auto tags
-      description: Gets auto tags
       operationId: 10940bb3a68651336692ca350c00f4b4
       parameters:
       - name: account_id
@@ -107,9 +106,8 @@ paths:
       - Aloft Token: []
     post:
       tags:
-      - Auto Tags
+      - Autotags
       summary: Create an Auto Tag
-      description: Create an Auto Tag
       operationId: 5f3d5d66040d65d7f7ab5a8467e011a1
       parameters:
       - name: account_id
@@ -146,9 +144,8 @@ paths:
   /v1/account/{account_id}/auto-tags/{auto_tag_id}:
     get:
       tags:
-      - Auto Tags
+      - Autotags
       summary: Get an auto tag
-      description: Get an auto tag
       operationId: 6005f6d8ec756f6e11edad041ab339f5
       parameters:
       - name: account_id
@@ -184,9 +181,8 @@ paths:
       - Aloft Token: []
     put:
       tags:
-      - Auto Tags
+      - Autotags
       summary: Update an Auto Tag
-      description: Update an Auto Tag
       operationId: 53bff2221c7a068daf9417b3170c88d8
       parameters:
       - name: account_id
@@ -227,9 +223,8 @@ paths:
       - Aloft Token: []
     delete:
       tags:
-      - Auto Tags
+      - Autotags
       summary: Delete an Auto Tag
-      description: Delete an Auto Tag
       operationId: 2ea05946f16ff0b1602ec0ef6e28e659
       parameters:
       - name: account_id
@@ -253,11 +248,8 @@ paths:
       - Aloft Token: []
 components:
   securitySchemes:
-    Aloft Token:
+    Aloft_Token:
       type: http
       name: Aloft Token
       in: header
       scheme: bearer
-servers:
-- url: https://api.aloft.ai
-  description: Base URL reconciled from apis.yml

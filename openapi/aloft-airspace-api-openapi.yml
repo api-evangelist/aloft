@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Aloft API V1 Accounts Airspace API
+  title: Aloft API V1 Airspace API
   contact:
     email: support@aloft.ai
   version: 1.0.0
-  description: Accounts
+  description: Airspace
 tags:
 - name: Airspace
   description: Airspace
@@ -14,7 +14,6 @@ paths:
       tags:
       - Airspace
       summary: Gets advisories close to a given lat / lng
-      description: Gets advisories close to a given lat / lng
       operationId: 7f9bbad943443bcb2ae82013acdba86e
       parameters:
       - name: lng
@@ -29,8 +28,7 @@ paths:
         example: '30.15616435627915'
       - name: advisory_types[]
         in: query
-        description: Array of airspace advisory types to limit the request to. Providing nothing will
-          return everything
+        description: Array of airspace advisory types to limit the request to. Providing nothing will return everything
         schema:
           type: array
           items:
@@ -63,13 +61,11 @@ paths:
       tags:
       - Airspace
       summary: Gets advisories within and close to a Polygon or Point feature
-      description: Gets advisories within and close to a Polygon or Point feature
       operationId: de5e30e2a9f12597fa8c9abf9ab53f2d
       parameters:
       - name: advisory_types[]
         in: query
-        description: Array of airspace advisory types to limit the request to. Providing nothing will
-          return everything
+        description: Array of airspace advisory types to limit the request to. Providing nothing will return everything
         schema:
           type: array
           items:
@@ -107,7 +103,6 @@ paths:
       tags:
       - Airspace
       summary: Gets weather close to a given lat / lng
-      description: Gets weather close to a given lat / lng
       operationId: 0e20bc62af934af69944b83534177aab
       parameters:
       - name: lng
@@ -131,9 +126,8 @@ paths:
     get:
       tags:
       - Airspace
-      summary: Return available map layers and sources.
-      description: Get a list of all available layers and sources to be added to a mapping client like
-        Mapbox.
+      summary: Return available map layers and sources
+      description: Get a list of all available layers and sources to be added to a mapping client like Mapbox.
       operationId: 8c1b1f6fe6014f33386cc15294f474dc
       parameters:
       - name: region
@@ -181,7 +175,6 @@ paths:
       tags:
       - Airspace
       summary: Gets advisories close to a given lat / lng
-      description: Gets advisories close to a given lat / lng
       operationId: 3bbaba2a7b2f4092228371cbb79a9c03
       parameters:
       - name: account_id
@@ -200,8 +193,7 @@ paths:
         example: '30.15616435627915'
       - name: advisory_types[]
         in: query
-        description: Array of airspace advisory types to limit the request to. Providing nothing will
-          return everything
+        description: Array of airspace advisory types to limit the request to. Providing nothing will return everything
         schema:
           type: array
           items:
@@ -235,7 +227,6 @@ paths:
       tags:
       - Airspace
       summary: Get account layers
-      description: Get account layers
       operationId: a83906a73234eda56774a0d466514428
       parameters:
       - name: account_id
@@ -281,7 +272,6 @@ paths:
       tags:
       - Airspace
       summary: Custom Airspace Search
-      description: Custom Airspace Search
       operationId: be0dfb3e12d8d422aa00b72ba6d8fed2
       parameters:
       - name: account_id
@@ -305,7 +295,6 @@ paths:
       tags:
       - Airspace
       summary: Custom Airspace Search
-      description: Custom Airspace Search
       operationId: ef20e4748dbd3d1207b9f6b447667a47
       parameters:
       - name: type
@@ -322,11 +311,8 @@ paths:
           description: Successful operation
 components:
   securitySchemes:
-    Aloft Token:
+    Aloft_Token:
       type: http
       name: Aloft Token
       in: header
       scheme: bearer
-servers:
-- url: https://api.aloft.ai
-  description: Base URL reconciled from apis.yml

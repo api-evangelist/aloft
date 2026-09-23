@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Aloft API V1 Accounts VideoStreaming API
+  title: Aloft API V1 Video Streaming API
   contact:
     email: support@aloft.ai
   version: 1.0.0
-  description: Accounts
+  description: VideoStreaming
 tags:
 - name: VideoStreaming
   description: VideoStreaming
@@ -13,7 +13,7 @@ paths:
     get:
       tags:
       - VideoStreaming
-      summary: Returns list of open video streaming rooms.
+      summary: Returns list of open video streaming rooms
       description: Returns list of open video streaming rooms.
       operationId: e59c33b6a9cadb993d3a961c1db712c1
       parameters:
@@ -33,7 +33,7 @@ paths:
     get:
       tags:
       - VideoStreaming
-      summary: Returns list of in progress video streaming rooms.
+      summary: Returns list of in progress video streaming rooms
       description: Returns list of in progress video streaming rooms.
       operationId: 9a7324a4277cfce455d01d3a7b8b2d66
       parameters:
@@ -58,7 +58,7 @@ paths:
     post:
       tags:
       - VideoStreaming
-      summary: Creates a new streaming room.
+      summary: Creates a new streaming room
       description: Creates a new streaming room.
       operationId: 7dc5f87559a5b53b632a90880307159f
       parameters:
@@ -87,7 +87,7 @@ paths:
     post:
       tags:
       - VideoStreaming
-      summary: Retrieve access credentials for a stream.
+      summary: Retrieve access credentials for a stream
       description: Retrieve access credentials for a stream.
       operationId: 2d2ce1d6c5b075c76c315bb6eea32e85
       parameters:
@@ -116,7 +116,7 @@ paths:
     post:
       tags:
       - VideoStreaming
-      summary: Retrieve access credentials for a stream.
+      summary: Retrieve access credentials for a stream
       description: Retrieve access credentials for a stream.
       operationId: 70f8a129097e32f6aa802311b3ad9aed
       requestBody:
@@ -137,7 +137,7 @@ paths:
     post:
       tags:
       - VideoStreaming
-      summary: Completes and ends stream.
+      summary: Completes and ends stream
       description: Completes and ends stream.
       operationId: cfae27e6fa6231c04730e3e94f35c8ef
       parameters:
@@ -166,7 +166,7 @@ paths:
     post:
       tags:
       - VideoStreaming
-      summary: Create a sharable link for this account's streams.
+      summary: Create a sharable link for this account's streams
       description: Create a sharable link for this account's streams.
       operationId: bd127bcf771760b39171e134d6486367
       parameters:
@@ -188,11 +188,8 @@ paths:
       - Aloft Token: []
 components:
   securitySchemes:
-    Aloft Token:
+    Aloft_Token:
       type: http
       name: Aloft Token
       in: header
       scheme: bearer
-servers:
-- url: https://api.aloft.ai
-  description: Base URL reconciled from apis.yml
