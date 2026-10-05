@@ -1,0 +1,12 @@
+{
+ "url": "https://api.aloft.ai/v1-public.json",
+ "requested_url": "https://api.aloft.ai/v1-public.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 191561,
+ "sha256": "b7a591997e9dadc18c96fedff7eeae958ae06cf8cea4b0fb6ee6d1751f6b3371",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
