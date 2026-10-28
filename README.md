@@ -64,22 +64,182 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Aloft (aloft.ai, formerly Kittyhawk.io) is the leading FAA-approved provider of drone
-airspace and fleet-management software in the United States, powering the majority of
-LAANC airspace authorizations and unmanned traffic management (UTM) for government,
-public-safety, enterprise, and recreational drone pilots.
+Aloft (aloft.ai, formerly Kittyhawk.io) is the leading FAA-approved provider of drone airspace and fleet-management software in the United States, powering the majority of LAANC airspace authorizations and unmanned traffic management (UTM) for government, public-safety, enterprise, and recreational drone pilots. The Aloft API V1 is an http-bearer-authenticated REST API exposing 180 operations across 36 resource groups: airspace advisories and weather, LAANC / Notify & Fly, flights and flight logs, aircraft, batteries and maintenance, missions, risk assessments, checklists, incidents, alerts, files, workflows, and map tile layers. Aloft is SOC 2 Type II and ISO 27001 certified. This profile was enriched by the API Evangelist pipeline from Aloft's public OpenAPI and developer surface.
 
-The Aloft API V1 is an http-bearer-authenticated REST API (180 operations across 36
-resource groups) covering airspace advisories, LAANC / Notify & Fly, flights and flight
-logs, aircraft, maintenance, missions, risk assessments, checklists, and map tile layers.
+**Areas:** Drones · Airspace · UTM · LAANC · Aviation · Fleet Management · Geospatial · Public Safety
 
-- Developer portal: https://www.aloft.ai/developer/
-- API docs (Swagger UI): https://api.aloft.ai/v1/docs
-- OpenAPI: https://api.aloft.ai/v1-public.json
-- Security & compliance (SOC 2 Type II, ISO 27001): https://www.aloft.ai/security/
-- Status: https://status.aloft.ai
+## Aloft on APIs.io
 
-Backed by: a16z (portfolio-lead provenance; unverified as a direct investor).
+Everything profiled for Aloft is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/aloft/](https://apis.io/providers/aloft/)** — or go straight to one of the APIs or properties below.
 
-This repo was enriched by the API Evangelist pipeline from Aloft's public OpenAPI and
-developer surface.
+### APIs (36)
+
+- [Aloft Accounts API](https://apis.io/apis/aloft/aloft-accounts-api/) — Accounts
+- [Aloft Activity API](https://apis.io/apis/aloft/aloft-activity-api/) — Activity
+- [Aloft Aircraft API](https://apis.io/apis/aloft/aloft-aircraft-api/) — Aircraft
+- [Aloft AirMesh API](https://apis.io/apis/aloft/aloft-airmesh-api/) — AirMesh
+- [Aloft Airspace API](https://apis.io/apis/aloft/aloft-airspace-api/) — Airspace
+- [Aloft Alert Recipients API](https://apis.io/apis/aloft/aloft-alert-recipients-api/) — Alert Recipients
+- [Aloft Alerts API](https://apis.io/apis/aloft/aloft-alerts-api/) — Alerts
+- [Aloft Application Notices API](https://apis.io/apis/aloft/aloft-application-notices-api/) — Application Notices
+- [Aloft Auth API](https://apis.io/apis/aloft/aloft-auth-api/) — Auth
+- [Aloft Batteries API](https://apis.io/apis/aloft/aloft-batteries-api/) — Batteries
+- [Aloft Certification Renewal API](https://apis.io/apis/aloft/aloft-certification-renewal-api/) — Certification Renewal
+- [Aloft Certifications API](https://apis.io/apis/aloft/aloft-certifications-api/) — Certifications
+- [Aloft Checklist Executions API](https://apis.io/apis/aloft/aloft-checklist-executions-api/) — Checklist Executions
+- [Aloft Checklists API](https://apis.io/apis/aloft/aloft-checklists-api/) — Checklists
+- [Aloft Components API](https://apis.io/apis/aloft/aloft-components-api/) — Components
+- [Aloft Connections API](https://apis.io/apis/aloft/aloft-connections-api/) — Connections
+- [Aloft Files API](https://apis.io/apis/aloft/aloft-files-api/) — Files
+- [Aloft Files by Resource API](https://apis.io/apis/aloft/aloft-files-by-resource-api/) — Files by Resource
+- [Aloft Flight Logs API](https://apis.io/apis/aloft/aloft-flight-logs-api/) — Flight Logs
+- [Aloft Flight Sessions API](https://apis.io/apis/aloft/aloft-flight-sessions-api/) — Flight Sessions
+- [Aloft Flights API](https://apis.io/apis/aloft/aloft-flights-api/) — Flights
+- [Aloft Incidents API](https://apis.io/apis/aloft/aloft-incidents-api/) — Incidents
+- [Aloft Maintenance API](https://apis.io/apis/aloft/aloft-maintenance-api/) — Maintenance
+- [Aloft Maintenance Recommendations API](https://apis.io/apis/aloft/aloft-maintenance-recommendations-api/) — Maintenance Recommendations
+- [Aloft Maintenance Schedules (Beta) API](https://apis.io/apis/aloft/aloft-maintenance-schedules-beta-api/) — Maintenance Schedules (Beta)
+- [Aloft Missions API](https://apis.io/apis/aloft/aloft-missions-api/) — Missions
+- [Aloft Notify & Fly API](https://apis.io/apis/aloft/aloft-notify-fly-api/) — Notify & Fly
+- [Aloft Risk Assessment Executions API](https://apis.io/apis/aloft/aloft-risk-assessment-executions-api/) — Risk Assessment Executions
+- [Aloft Risk Assessments API](https://apis.io/apis/aloft/aloft-risk-assessments-api/) — Risk Assessments
+- [Aloft Tag Associations API](https://apis.io/apis/aloft/aloft-tag-associations-api/) — Tag Associations
+- [Aloft Tag Groups API](https://apis.io/apis/aloft/aloft-tag-groups-api/) — Tag Groups
+- [Aloft Tags API](https://apis.io/apis/aloft/aloft-tags-api/) — Tags
+- [Aloft Users API](https://apis.io/apis/aloft/aloft-users-api/) — Users
+- [Aloft VideoStreaming API](https://apis.io/apis/aloft/aloft-videostreaming-api/) — VideoStreaming
+- [Aloft Workflows API](https://apis.io/apis/aloft/aloft-workflows-api/) — Workflows
+- [Aloft Autotags API](https://apis.io/apis/aloft/aloft-autotags-api/) — Auto Tags
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [aloft](https://apis.io/servers/aloft/aloft/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Aloft Agentic Access](https://apis.io/agentic-access/aloft/aloft-agentic-access/)
+
+#### Collections (36)
+
+Postman and Open Collection request collections.
+
+- [Aloft API V1 Accounts API](https://apis.io/collections/aloft/open-aloft-accounts-api/)
+- [Aloft API V1 Accounts Activity API](https://apis.io/collections/aloft/open-aloft-activity-api/)
+- [Aloft API V1 Accounts Aircraft API](https://apis.io/collections/aloft/open-aloft-aircraft-api/)
+- [Aloft API V1 Accounts AirMesh API](https://apis.io/collections/aloft/open-aloft-airmesh-api/)
+- [Aloft API V1 Accounts Airspace API](https://apis.io/collections/aloft/open-aloft-airspace-api/)
+- [Aloft API V1 Accounts Alert Recipients API](https://apis.io/collections/aloft/open-aloft-alert-recipients-api/)
+- [Aloft API V1 Accounts Alerts API](https://apis.io/collections/aloft/open-aloft-alerts-api/)
+- [Aloft API V1 Accounts Application Notices API](https://apis.io/collections/aloft/open-aloft-application-notices-api/)
+- [Aloft API V1 Accounts Auth API](https://apis.io/collections/aloft/open-aloft-auth-api/)
+- [Aloft API V1 Accounts Auto Tags API](https://apis.io/collections/aloft/open-aloft-auto-tags-api/)
+- [Aloft API V1 Accounts Batteries API](https://apis.io/collections/aloft/open-aloft-batteries-api/)
+- [Aloft API V1 Accounts Certification Renewal API](https://apis.io/collections/aloft/open-aloft-certification-renewal-api/)
+- [Aloft API V1 Accounts Certifications API](https://apis.io/collections/aloft/open-aloft-certifications-api/)
+- [Aloft API V1 Accounts Checklist Executions API](https://apis.io/collections/aloft/open-aloft-checklist-executions-api/)
+- [Aloft API V1 Accounts Checklists API](https://apis.io/collections/aloft/open-aloft-checklists-api/)
+- [Aloft API V1 Accounts Components API](https://apis.io/collections/aloft/open-aloft-components-api/)
+- [Aloft API V1 Accounts Connections API](https://apis.io/collections/aloft/open-aloft-connections-api/)
+- [Aloft API V1 Accounts Files API](https://apis.io/collections/aloft/open-aloft-files-api/)
+- [Aloft API V1 Accounts Files by Resource API](https://apis.io/collections/aloft/open-aloft-files-by-resource-api/)
+- [Aloft API V1 Accounts Flight Logs API](https://apis.io/collections/aloft/open-aloft-flight-logs-api/)
+- [Aloft API V1 Accounts Flight Sessions API](https://apis.io/collections/aloft/open-aloft-flight-sessions-api/)
+- [Aloft API V1 Accounts Flights API](https://apis.io/collections/aloft/open-aloft-flights-api/)
+- [Aloft API V1 Accounts Incidents API](https://apis.io/collections/aloft/open-aloft-incidents-api/)
+- [Aloft API V1 Accounts Maintenance API](https://apis.io/collections/aloft/open-aloft-maintenance-api/)
+- [Aloft API V1 Accounts Maintenance Recommendations API](https://apis.io/collections/aloft/open-aloft-maintenance-recommendations-api/)
+- …and 11 more published on APIs.io
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Aloft Openapi Overlay](https://apis.io/overlays/aloft/aloft-openapi-overlay/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Aloft Authentication](https://apis.io/security/aloft/aloft-authentication/)
+- [Aloft Domain Security](https://apis.io/security/aloft/aloft-domain-security/)
+- [Aloft Trust Center](https://apis.io/security/aloft/aloft-trust-center/)
+- [Aloft Vulnerability Disclosure](https://apis.io/security/aloft/aloft-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.aloft.ai/)
+- [Documentation](https://api.aloft.ai/v1/docs)
+- [API reference](https://api.aloft.ai/v1/docs)
+- [Support](https://www.aloft.ai/support/)
+- [Blog](https://www.aloft.ai/news/)
+- [Security](https://www.aloft.ai/security/)
+- [Compliance](https://www.aloft.ai/security/)
+- [Terms of service](https://www.aloft.ai/terms/)
+- [Privacy policy](https://www.aloft.ai/privacy/)
+- [GitHub](https://github.com/Kittyhawkio)
+- [Status](https://status.aloft.ai)
+
+## API Evangelist rating
+
+**Kin Score 42.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 39.5 |
+| Contract governance | 18.2 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 47.0 |
+| Access clarity | 43.4 |
+
+**Agent readiness 22.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | mostly |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aloft/](https://apis.io/providers/aloft/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Aloft: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/aloft/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
