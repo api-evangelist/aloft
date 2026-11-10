@@ -164,6 +164,12 @@ OpenAPI overlays, including conversational phrasing for each operation.
 
 - [Aloft Openapi Overlay](https://apis.io/overlays/aloft/aloft-openapi-overlay/)
 
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Aloft API Rules](https://apis.io/rules/aloft/aloft-rules/)
+
 #### Security (4)
 
 Authentication, trust centre, and vulnerability disclosure.
@@ -179,8 +185,10 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 - [Website](https://www.aloft.ai/)
 - [Documentation](https://api.aloft.ai/v1/docs)
+- [Getting started](https://help.aloft.ai/en/articles/7157160-air-control-app-quick-start)
 - [API reference](https://api.aloft.ai/v1/docs)
 - [Support](https://www.aloft.ai/support/)
+- [Changelog](https://www.aloft.ai/whats-new/)
 - [Blog](https://www.aloft.ai/news/)
 - [Security](https://www.aloft.ai/security/)
 - [Compliance](https://www.aloft.ai/security/)
